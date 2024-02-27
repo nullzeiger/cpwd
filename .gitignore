@@ -16,6 +16,7 @@ autom4te.cache
 /autoscan-*.log
 /aclocal.m4
 /compile
+/config.h
 /config.cache
 /config.guess
 /config.h.in
@@ -50,3 +51,17 @@ m4/lt~obsolete.m4
 # can automatically generate from config.status script
 # (which is called by configure script))
 Makefile
+
+*.o
+*.a
+*.trs
+*.log
+
+cpwd
+all_password_test
+delete_password_test
+file_password_test
+file_password_xfail_test
+new_password_test
+remove_file_password_test
+search_password_test
