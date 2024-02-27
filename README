@@ -1,4 +1,4 @@
-# cpwd
+cpwd
 (Really) Simple CLI for password management.
 
 This is the README.md file for the cpwd.
@@ -19,21 +19,22 @@ All of these programs are available from
 ftp://ftp.gnu.org/gnu.
 
 Install dependencies on Ubuntu
-sudo apt update
-sudo apt install gcc autotools-dev autoconf autoconf-archive
+
+	sudo apt update
+	sudo apt install gcc autotools-dev autoconf autoconf-archive
 
 Install dependencies on Fedora
-sudo dnf update
-sudo dnf install gcc autotools-dev autoconf autoconf-archive
+
+	sudo dnf update
+	sudo dnf install gcc autotools-dev autoconf autoconf-archive
 
 Building
 --------
 
-After getting the git sources, and installing the tools above, you
-can run
+After getting the git sources, and installing the tools above, you can run
 
-  ./bootstrap
+      ./bootstrap
 
 to do a fresh build.  After that first time, running make should suffice.
 
-cpwd is free software. See the file LICENSE for copying conditions.
+cpwd is free software.  See the file LICENSE for copying conditions.
