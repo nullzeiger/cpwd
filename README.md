@@ -1,2 +1,39 @@
 # cpwd
 (Really) Simple CLI for password management.
+
+This is the README.md file for the cpwd.
+
+Copyright (C) 2022-2024 Ivan Guerreschi.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Autotools
+---------
+
+This distribution uses whatever versions of Automake, Autoconf.
+If you are getting the sources from git (or change configure.ac), you'll
+need to have these tools installed to (re)build.
+All of these programs are available from
+ftp://ftp.gnu.org/gnu.
+
+Install dependencies on Ubuntu
+sudo apt update
+sudo apt install gcc autotools-dev autoconf autoconf-archive
+
+Install dependencies on Fedora
+sudo dnf update
+sudo dnf install gcc autotools-dev autoconf autoconf-archive
+
+Building
+--------
+
+After getting the git sources, and installing the tools above, you
+can run
+
+  ./bootstrap
+
+to do a fresh build.  After that first time, running make should suffice.
+
+cpwd is free software. See the file LICENSE for copying conditions.
