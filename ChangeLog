@@ -1,0 +1,47 @@
+2024-02-28 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
+
+	* Release 1.4
+	* lib/password.c: add multiple results search in search function
+	* src/parse_wrapper.c: update search_credential for multiple results
+
+2023-04-21 Ivan Guerreschi <ivanguerreschi86@gmail.com>
+
+	* Release: 1.3
+	* tests/all_password_test.c: test all password
+	* tests/delete_password_test.c: delete password
+	* tests/file_password_xfail_test.c: test not exist file path
+	* tests/new_password_test.c: test new password
+	* tests/remove_file_password_test.c: test remove password
+	* tests/search_password_test.c: test search password
+
+2022-07-08 Ivan Guerreschi <ivanguerreschi86@gmail.com>
+
+	* Release: 1.2
+	* src/main.c (parsing): input user function
+	* src/menu_wrapper.c: rename file to parse_wrapper.c
+	* src/include/menu_wrapper.h: rename file to parse_wrapper.h
+	* src/parse_input.c (parsing): function for input user
+	* src/include/parse_input.h, src/parse_input.c (parsing): function for input user using getopt
+	* src/include/parse_wrapper.h, src/parse_wrapper.c (all function): update function for using parse_input
+
+2022-06-25 Ivan Guerreschi <ivanguerreschi86@gmail.com>
+
+	* Release: 1.1
+	* lib/password.h, lib/password.c (search): function for search credential
+	* lib/password.h, lib/password.c (delete): function for delete credential
+	* src/menu.c (print_menu): add number input for search, delete function
+	* src/menu_wrapper.c (search_credential): implementation search function
+	* src/menu_wrapper.c (delete_credential): implementation delete function
+	* src/main.c (main): menu case number for search, delete function
+
+2022-05-23 Ivan Guerreschi <ivanguerreschi86@gmail.com>
+
+	* Release: 1.0
+
+Copyright (C) 2022-2024 Ivan Guerreschi
+
+This file is part of cpwd.
+
+Copying and distribution of this file, with or without modification, are
+permitted in any medium without royalty provided the copyright notice
+and this notice are preserved.
