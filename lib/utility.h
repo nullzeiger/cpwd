@@ -20,15 +20,15 @@
 #ifndef UTILITY_H
 #define UTILITY_H
 
-#define NAMEFILE "/.password.gpg"
-#define NAMEFILETMP "/tmp/.passwordtmp.gpg"
+#define NAMEFILE    "/.password"
+#define TMPNAMEFILE "/.passwordtmp"
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-  const char *file_name (const char *file_password);
+  char *file_name (const char *file_password);
   int remove_file (const char *file);
 
 #ifdef __cplusplus

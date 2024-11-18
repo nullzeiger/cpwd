@@ -63,7 +63,7 @@ help (void)
   return "password-cli-manager options\n"
     "Options:\n"
     "  -a --all All credential\n"
-    "  -aNUM --all=NUM Number of credentials entered in the NUM input"
+    "  -aNUM --all=NUM Number of credentials entered in the NUM input\n"
     "  -c\"WEBSITE USERNAME EMAIL PASSWORD\" Create credential\n"
     "  --create=\"WEB USERNAME EMAIL PASSWORD\" Create credential\n"
     "  -dNUM  --delete=NUM Delete credential\n"

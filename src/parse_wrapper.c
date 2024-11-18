@@ -17,6 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
+#define  _GNU_SOURCE
 #include "include/parse_wrapper.h"
 #include "password.h"
 #include "utility.h"
@@ -27,15 +28,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BUFFERSIZE 100
-
 void
 print_all_credential (const char *number_row)
 {
-  const char *filename = file_name (NAMEFILE);
+  char *filename = file_name (NAMEFILE);
   FILE *file_password, *file_row;
-  open_file (&file_password, filename);
-  open_file (&file_row, filename);
+  read_file (&file_password, filename);
+  read_file (&file_row, filename);
 
   long line = 0;
 
@@ -45,7 +44,7 @@ print_all_credential (const char *number_row)
   if (isdigit (number_row[0]))
     line = strtol (number_row, NULL, 10);
   else
-    fprintf (stderr, "Error input is not number");
+    perror ("Error input is not number");
 
   if (line > 0)
     row = (size_t) line;
@@ -68,7 +67,9 @@ print_all_credential (const char *number_row)
     }
 
   free (credential);
-  credential = NULL;
+    credential = NULL;
+  free (filename);
+  filename = NULL;
   close_file (&file_row);
   close_file (&file_password);
 }
@@ -83,90 +84,120 @@ create_credential (const char *new_credential)
 
   if (new_credential[0] == ' ' || new_credential[0] == '\0')
     {
-      puts ("Error input, string is empty");
+      perror ("Error input, string is empty");
       exit (EXIT_FAILURE);
     }
 
-  copy_credential = strndup (new_credential, strlen (new_credential));
+  copy_credential = strndupa (new_credential, strlen (new_credential));
+  if (copy_credential == NULL)
+    {
+      perror ("Error allocation failed");
+      exit (EXIT_FAILURE);
+    }
 
   token = strtok (copy_credential, delimiters);
-  if (token[0] != '\0')
+  if (token != NULL)
     {
       credential.website = malloc (100 * sizeof (char));
       if (credential.website)
 	strncpy (credential.website, token, strlen (token) + 1);
       else
 	{
-	  fprintf (stderr, "Error allocation failed");
+	  perror ("Error allocation failed");
 	  exit (EXIT_FAILURE);
 	}
     }
   else
     {
-      fprintf (stderr, "Error input token, string is empty");
+      perror ("Error input token, string is empty");
       exit (EXIT_FAILURE);
     }
 
   token = strtok (NULL, delimiters);
-  if (token[0] != '\0')
+  if (token != NULL)
     {
       credential.username = malloc (100 * sizeof (char));
       if (credential.username)
 	strncpy (credential.username, token, strlen (token) + 1);
       else
 	{
-	  fprintf (stderr, "Error allocation failed");
+	  perror ("Error allocation failed");
+	  free (credential.website);
+	  credential.website = NULL;
 	  exit (EXIT_FAILURE);
 	}
     }
   else
     {
-      fprintf (stderr, "Error input token, string is empty");
+      perror ("Error input token, string is empty");
+      free (credential.website);
+      credential.website = NULL;
       exit (EXIT_FAILURE);
     }
 
   token = strtok (NULL, delimiters);
-  if (token[0] != '\0')
+  if (token != NULL)
     {
       credential.email = malloc (100 * sizeof (char));
       if (credential.email)
 	strncpy (credential.email, token, strlen (token) + 1);
       else
 	{
-	  fprintf (stderr, "Error allocation failed");
+	  perror ("Error allocation failed");
+	  free (credential.username);
+	  credential.username = NULL;
+	  free (credential.website);
+	  credential.website = NULL;
 	  exit (EXIT_FAILURE);
 	}
     }
   else
     {
-      fprintf (stderr, "Error input token, string is empty");
+      perror ("Error input token, string is empty");
+      free (credential.username);
+      credential.username = NULL;
+      free (credential.website);
+      credential.website = NULL;
       exit (EXIT_FAILURE);
     }
 
   token = strtok (NULL, delimiters);
-  if (token[0] != '\0')
+  if (token != NULL)
     {
       credential.password = malloc (100 * sizeof (char));
       if (credential.password)
 	strncpy (credential.password, token, strlen (token) + 1);
       else
 	{
-	  fprintf (stderr, "Error allocation failed");
+	  perror ("Error allocation failed");
+	  free (credential.username);
+	  credential.username = NULL;
+	  free (credential.website);
+	  credential.website = NULL;
+	  free (credential.email);
+	  credential.email = NULL;
 	  exit (EXIT_FAILURE);
 	}
     }
   else
     {
-      fprintf (stderr, "Error input token, string is empty");
+      perror ("Error input token, string is empty");
+      free (credential.username);
+      credential.username = NULL;
+      free (credential.website);
+      credential.website = NULL;
+      free (credential.email);
+      credential.email = NULL;
       exit (EXIT_FAILURE);
     }
 
-  const char *filename = file_name (NAMEFILE);
+  char *filename = file_name (NAMEFILE);
   FILE *file;
   open_file (&file, filename);
   create (file, credential);
   close_file (&file);
-  free (copy_credential);
+  free (filename);
+  filename = NULL;
 }
 
 void
@@ -174,8 +205,8 @@ search_credential (const char *search_key)
 {
   const char *filename = file_name (NAMEFILE);
   FILE *file_password, *file_row;
-  open_file (&file_password, filename);
-  open_file (&file_row, filename);
+  read_file (&file_password, filename);
+  read_file (&file_row, filename);
 
   size_t row = count_row (file_row);
   credential_t *credential = all (file_password, row);
@@ -209,11 +240,14 @@ search_credential (const char *search_key)
 void
 delete_credential (const char *input_row)
 {
-  const char *filename = file_name (NAMEFILE);
-  const char *tmp_filename = NAMEFILETMP;
-  FILE *file_password, *file_tmp;
-  open_file (&file_password, filename);
-  open_file (&file_tmp, tmp_filename);
+  char *filename = file_name (NAMEFILE);
+  FILE *file_password;
+  read_file (&file_password, filename);
+  
+  char *tmp_filename = file_name (TMPNAMEFILE);  
+  FILE  *file_tmp;
+  create_file (&file_tmp, tmp_filename);
+
   int line = 0;
 
   if (isdigit (input_row[0]))
@@ -221,14 +255,21 @@ delete_credential (const char *input_row)
       line = atoi (input_row);
       rewind (file_password);
       delete (file_password, file_tmp, line);
-      if (remove_file (filename) == 0)
-	rename (tmp_filename, filename);
+      if (remove_file (filename))
+	{
+	  if (rename (tmp_filename, filename) != 0)
+	    perror ("Error rename file");
+	}
       else
-	fprintf (stderr, "Error delete file");
+	perror ("Error delete file");
     }
   else
-    fprintf (stderr, "Error input is not number");
+    perror ("Error input is not number");
 
   close_file (&file_password);
   close_file (&file_tmp);
+  free (filename);
+  filename = NULL;
+  free (tmp_filename);
+  tmp_filename = NULL;
 }

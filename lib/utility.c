@@ -25,15 +25,31 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-const char *
+char *
 file_name (const char *file_password)
 {
-  char *file;
+  char *home_dir = getenv ("HOME");
+  if (home_dir == NULL)
+    {
+      struct passwd *pwd = getpwuid (getuid ());
+      if (pwd == NULL)
+        {
+          perror ("Error get HOME variable");
+          return NULL;
+        }
+      home_dir = pwd->pw_dir;
+    }
 
-  if ((file = getenv ("HOME")) == NULL)
-    file = getpwuid (getuid ())->pw_dir;
+  size_t len = strlen (home_dir) + strlen (file_password) + 1;
 
-  strcat (file, file_password);
+  char *file = malloc (len);
+  if (file == NULL)
+    {
+      perror ("Error allocation failed");
+      return NULL;
+    }
+
+  snprintf (file, len, "%s%s", home_dir, file_password);
 
   return file;
 }
@@ -44,5 +60,8 @@ remove_file (const char *file)
   if (remove (file) == 0)
     return 0;
   else
-    return -1;
+    {
+      perror ("Error remove file");
+      return -1;
+    }
 }

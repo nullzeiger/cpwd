@@ -17,6 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
+#include <stdlib.h>
 #include "include/utility_test.h"
 #include "password.h"
 #include "utility.h"
@@ -27,7 +28,7 @@ main (void)
   int value = 1;
 
   int line = 1;
-  const char *file = file_name (NAMEFILETEST);
+  char *file = file_name (NAMEFILETEST);
   const char *filetmp = "/tmp/.passwordtmp";
 
   FILE *file_password, *file_row, *file_tmp;
@@ -51,5 +52,7 @@ main (void)
 
   close_file (&file_row);
 
+  free (file);
+  
   return value;
 }

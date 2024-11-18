@@ -36,6 +36,8 @@ extern "C"
   } credential_t;
 
   void open_file (FILE ** file, const char *filename);
+  void create_file (FILE ** file, const char *filename);
+  void read_file (FILE ** file, const char *filename);
   void close_file (FILE ** file);
   size_t count_row (FILE * file);
   credential_t *all (FILE * file, size_t row);

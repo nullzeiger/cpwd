@@ -19,15 +19,22 @@
 
 #include "include/utility_test.h"
 #include "utility.h"
+#include <stdlib.h>
 #include <string.h>
 
 int
 main (void)
 {
-  const char *file = file_name (NAMEFILETEST);
+  char *file = file_name (NAMEFILETEST);
 
   if (strcmp (file, file_name ("/.passwordtest")) == 0)
-    return 0;
+    {
+      free (file);
+      return 0;
+    }
   else
-    return 1;
+    {
+      free (file);
+      return 1;
+    }
 }

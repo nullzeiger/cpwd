@@ -28,40 +28,67 @@ main (void)
 {
   int value = 0;
 
-  const char *file = file_name (NAMEFILETEST);
+  char *file = file_name (NAMEFILETEST);
 
   FILE *file_password;
-  open_file (&file_password, file);
+  create_file (&file_password, file);
 
   credential_t credential;
 
   credential.website = malloc (50 * sizeof (char));
   if (credential.website)
     strcpy (credential.website, "webpippo");
-
+  else
+    {
+      perror ("Error allocation memory");
+      exit (1);
+    }
+  
   credential.username = malloc (50 * sizeof (char));
   if (credential.username)
     strcpy (credential.username, "pippo");
-
+  else
+    {
+      perror ("Error allocation memory");
+      free (credential.website);
+      exit (1);
+    }
+    
   credential.email = malloc (50 * sizeof (char));
   if (credential.email)
     strcpy (credential.email, "pippo@topolandia.com");
-
+  else
+    {
+      perror ("Error allocation memory");
+      free (credential.website);
+      free (credential.username);
+      exit (1);
+    }
+  
   credential.password = malloc (50 * sizeof (char));
   if (credential.password)
     strcpy (credential.password, "1234");
-
+  else
+    {
+      perror ("Error allocation memory");
+      free (credential.website);
+      free (credential.username);
+      free (credential.email);
+      exit (1);
+    }
+    
   if ((strncmp (credential.website, "webpippo", 8) == 0)
       && (strncmp (credential.username, "pippo", 5) == 0)
       && (strncmp (credential.email, "pippo@topolandia.com", 20) == 0)
       && (strncmp (credential.password, "1234", 4) == 0))
     value = 0;
   else
-    value = 1;
-
+      value = 1;
+    
   create (file_password, credential);
 
   close_file (&file_password);
+  free (file);
 
   return value;
 }

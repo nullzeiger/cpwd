@@ -27,7 +27,7 @@ main (void)
 {
   int value = 1;
 
-  const char *file = file_name (NAMEFILETEST);
+  char *file = file_name (NAMEFILETEST);
 
   FILE *file_password, *file_row;
   open_file (&file_password, file);
@@ -46,6 +46,7 @@ main (void)
     value = 1;
 
   free (result);
-
+  free (file);
+  
   return value;
 }
