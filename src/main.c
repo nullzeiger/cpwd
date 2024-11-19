@@ -1,5 +1,5 @@
 /* main.c
-
+   
    Copyright (C) 2022-2024 Ivan Guerreschi.
    
    This file is part of cpwd.
@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "include/parse_input.h"
+#include "parse_input.h"
 #include <stdlib.h>
 
 int

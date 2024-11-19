@@ -18,7 +18,7 @@
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include <stdlib.h>
-#include "include/utility_test.h"
+#include "utility_test.h"
 #include "password.h"
 #include "utility.h"
 

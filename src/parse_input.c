@@ -17,8 +17,8 @@
    You should have received a copy of the GNU General Public License
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "include/parse_input.h"
-#include "include/parse_wrapper.h"
+#include "parse_input.h"
+#include "parse_wrapper.h"
 #include "info.h"
 #include "password.h"
 #include "utility.h"

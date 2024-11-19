@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "include/utility_test.h"
+#include "utility_test.h"
 #include "utility.h"
 #include <stdlib.h>
 #include <string.h>

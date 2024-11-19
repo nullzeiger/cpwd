@@ -1,3 +1,8 @@
+2024-11-19 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
+
+	* Release 1.5
+	* src/password_wrapper.c: resolve delete credential bug
+
 2024-02-28 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
 
 	* Release 1.4

@@ -24,19 +24,10 @@
 #include <config.h>
 #endif
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+const char *version (void);
+const char *package (void);
+const char *bugreport (void);
+const char *license (void);
+const char *help (void);
 
-  const char *version (void);
-  const char *package (void);
-  const char *bugreport (void);
-  const char *license (void);
-  const char *help (void);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif				/* INFO_H */
+#endif /* INFO_H */

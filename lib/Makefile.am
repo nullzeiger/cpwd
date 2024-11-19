@@ -22,7 +22,7 @@ include $(top_srcdir)/flymake.mk
 AM_CFLAGS = -I $(top_srcdir)/lib \
 			-Wall -Wextra -Wdouble-promotion -Wformat-security \
                         -Wformat-signedness -Winit-self -Wshift-overflow=2 \
-                        -Wswitch-default -Wstrict-overflow=4 -Walloca \
+                        -Wswitch-default -Wstrict-overflow=4 \
                         -Warith-conversion -Wduplicated-branches \
                         -Wduplicated-cond -Wshadow -Wcast-qual \
                         -Wconversion -Wdate-time -Wstrict-prototypes \

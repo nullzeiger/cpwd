@@ -17,7 +17,7 @@
    You should have received a copy of the GNU General Public License
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "include/utility_test.h"
+#include "utility_test.h"
 #include "password.h"
 #include "utility.h"
 #include <stdlib.h>
@@ -49,19 +49,12 @@ main (void)
   close_file (&file_row);
 
   free (credential[0].website);
-  credential[0].website = NULL;
   free (credential[0].username);
-  credential[0].username = NULL;
   free (credential[0].email);
-  credential[0].email = NULL;
   free (credential[0].password);
-  credential[0].password = NULL;
-
   free (credential);
-  credential = NULL;
 
   free (file);
-  file = NULL;
   
   return value;
 }

@@ -65,3 +65,15 @@ remove_file (const char *file)
       return -1;
     }
 }
+
+int
+rename_file (const char *old_file, const char *new_file)
+{
+  if (rename (old_file, new_file) == 0)
+    return 0;
+  else
+    {
+      perror ("Error rename file");
+      return -1;
+    }
+}

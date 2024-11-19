@@ -25,8 +25,6 @@ TESTS = file_password_test file_password_xfail_test new_password_test \
 XFAIL_TESTS = file_password_xfail_test
 check_PROGRAMS = $(TESTS)
 
-nobase_include_HEADERS = include/utility_test.h
-
 file_password_test_SOURCES = file_password_test.c
 file_password_test_CFLAGS = -I $(top_srcdir)/lib
 file_password_test_LDADD = $(top_builddir)/lib/libpassword.a

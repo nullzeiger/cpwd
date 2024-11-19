@@ -17,22 +17,25 @@
    You should have received a copy of the GNU General Public License
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "include/utility_test.h"
+#include "utility_test.h"
 #include "utility.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int
 main (void)
 {
-  const char *file = file_name (NAMEFILETEST);
+  char *file = file_name (NAMEFILETEST);
 
   if (strcmp (file, ".password") == 0)
     {
+      free (file);
       return 0;
     }
   else
     {
+      free (file);
       return 1;
     }
 }

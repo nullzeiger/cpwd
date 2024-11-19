@@ -18,7 +18,7 @@
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include <stdlib.h>
-#include "include/utility_test.h"
+#include "utility_test.h"
 #include "password.h"
 #include "utility.h"
 
@@ -38,7 +38,7 @@ main (void)
   rewind (file_password);
   delete (file_password, file_tmp, line);
   remove_file (file);
-  rename (filetmp, file);
+  rename_file (filetmp, file);
 
   close_file (&file_password);
   close_file (&file_tmp);

@@ -18,7 +18,7 @@
    along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #define  _GNU_SOURCE
-#include "include/parse_wrapper.h"
+#include "parse_wrapper.h"
 #include "password.h"
 #include "utility.h"
 #include <ctype.h>
@@ -257,7 +257,7 @@ delete_credential (const char *input_row)
       delete (file_password, file_tmp, line);
       if (remove_file (filename))
 	{
-	  if (rename (tmp_filename, filename) != 0)
+	  if (rename_file (tmp_filename, filename) != 0)
 	    perror ("Error rename file");
 	}
       else
@@ -269,7 +269,5 @@ delete_credential (const char *input_row)
   close_file (&file_password);
   close_file (&file_tmp);
   free (filename);
-  filename = NULL;
   free (tmp_filename);
-  tmp_filename = NULL;
 }

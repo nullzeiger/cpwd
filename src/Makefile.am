@@ -22,14 +22,14 @@ include $(top_srcdir)/flymake.mk
 AM_CFLAGS = -I $(top_srcdir)/src -I $(top_srcdir)/lib \
 			-Wall -Wextra -Wdouble-promotion -Wformat-security \
 			-Wformat-signedness -Winit-self -Wshift-overflow=2 \
-			-Wswitch-default -Wstrict-overflow=4 -Walloca \
+			-Wswitch-default -Wstrict-overflow=4 \
 			-Warith-conversion -Wduplicated-branches \
 			-Wduplicated-cond -Wshadow -Wcast-qual \
 			-Wconversion -Wdate-time -Wstrict-prototypes \
 			-Wmissing-prototypes -Winvalid-pch -Wredundant-decls \
 			-Wformat-nonliteral
 
-nobase_include_HEADERS = include/parse_wrapper.h include/parse_input.h
+nobase_include_HEADERS = parse_wrapper.h parse_input.h
 bin_PROGRAMS = cpwd
 cpwd_SOURCES = main.c parse_wrapper.c parse_input.c
 cpwd_LDADD = $(top_builddir)/lib/libpassword.a $(AM_LDFLAGS)

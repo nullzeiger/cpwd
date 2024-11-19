@@ -18,7 +18,7 @@
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
 AC_PREREQ([2.69])
-AC_INIT([cpwd], [1.4], [ivan.guerreschi.dev@gmail.com])
+AC_INIT([cpwd], [1.5], [ivan.guerreschi.dev@gmail.com])
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([src/main.c])
