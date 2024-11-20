@@ -67,9 +67,7 @@ print_all_credential (const char *number_row)
     }
 
   free (credential);
-    credential = NULL;
   free (filename);
-  filename = NULL;
   close_file (&file_row);
   close_file (&file_password);
 }
@@ -123,7 +121,6 @@ create_credential (const char *new_credential)
 	{
 	  perror ("Error allocation failed");
 	  free (credential.website);
-	  credential.website = NULL;
 	  exit (EXIT_FAILURE);
 	}
     }
@@ -131,7 +128,6 @@ create_credential (const char *new_credential)
     {
       perror ("Error input token, string is empty");
       free (credential.website);
-      credential.website = NULL;
       exit (EXIT_FAILURE);
     }
 
@@ -145,9 +141,7 @@ create_credential (const char *new_credential)
 	{
 	  perror ("Error allocation failed");
 	  free (credential.username);
-	  credential.username = NULL;
 	  free (credential.website);
-	  credential.website = NULL;
 	  exit (EXIT_FAILURE);
 	}
     }
@@ -155,9 +149,7 @@ create_credential (const char *new_credential)
     {
       perror ("Error input token, string is empty");
       free (credential.username);
-      credential.username = NULL;
       free (credential.website);
-      credential.website = NULL;
       exit (EXIT_FAILURE);
     }
 
@@ -171,11 +163,8 @@ create_credential (const char *new_credential)
 	{
 	  perror ("Error allocation failed");
 	  free (credential.username);
-	  credential.username = NULL;
 	  free (credential.website);
-	  credential.website = NULL;
 	  free (credential.email);
-	  credential.email = NULL;
 	  exit (EXIT_FAILURE);
 	}
     }
@@ -183,11 +172,8 @@ create_credential (const char *new_credential)
     {
       perror ("Error input token, string is empty");
       free (credential.username);
-      credential.username = NULL;
       free (credential.website);
-      credential.website = NULL;
       free (credential.email);
-      credential.email = NULL;
       exit (EXIT_FAILURE);
     }
 
@@ -197,13 +183,12 @@ create_credential (const char *new_credential)
   create (file, credential);
   close_file (&file);
   free (filename);
-  filename = NULL;
 }
 
 void
 search_credential (const char *search_key)
 {
-  const char *filename = file_name (NAMEFILE);
+  char *filename = file_name (NAMEFILE);
   FILE *file_password, *file_row;
   read_file (&file_password, filename);
   read_file (&file_row, filename);
@@ -221,8 +206,6 @@ search_credential (const char *search_key)
 		credential[result[i]].email, credential[result[i]].password);
     }
 
-  free (result);
-
   for (size_t i = 0; i < row; i++)
     {
       free (credential[i].website);
@@ -231,8 +214,9 @@ search_credential (const char *search_key)
       free (credential[i].password);
     }
 
+  free (result);
   free (credential);
-  credential = NULL;
+  free (filename);
   close_file (&file_row);
   close_file (&file_password);
 }

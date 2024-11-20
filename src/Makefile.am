@@ -27,7 +27,7 @@ AM_CFLAGS = -I $(top_srcdir)/src -I $(top_srcdir)/lib \
 			-Wduplicated-cond -Wshadow -Wcast-qual \
 			-Wconversion -Wdate-time -Wstrict-prototypes \
 			-Wmissing-prototypes -Winvalid-pch -Wredundant-decls \
-			-Wformat-nonliteral
+			-Wformat-nonliteral -ggdb
 
 nobase_include_HEADERS = parse_wrapper.h parse_input.h
 bin_PROGRAMS = cpwd

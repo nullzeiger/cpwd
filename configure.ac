@@ -37,15 +37,10 @@ AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_TYPE_SIZE_T
 
-# Check gnu11 flag
-AX_CHECK_COMPILE_FLAG(-std=gnu11,
-	[AX_CHECK_COMPILE_FLAG([-std=gnu11])],
-	[echo "C compiler cannot compile gnu11 code"])
-
 # Check -fanalyze flag
 AX_CHECK_COMPILE_FLAG(-fanalyzer,
 	[AX_APPEND_FLAG([-fanalyzer])],
-	[echo "C compiler doesn't support Static Analyzer Options (-fanalyzer)"])
+	[AC_MSG_WARN([Compiler does not support -fanalyzer flag])])
 
 AC_CONFIG_FILES([Makefile
 	lib/Makefile

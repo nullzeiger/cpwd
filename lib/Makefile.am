@@ -27,10 +27,8 @@ AM_CFLAGS = -I $(top_srcdir)/lib \
                         -Wduplicated-cond -Wshadow -Wcast-qual \
                         -Wconversion -Wdate-time -Wstrict-prototypes \
                         -Wmissing-prototypes -Winvalid-pch -Wredundant-decls \
-			-Wformat-nonliteral
-
+			-Wformat-nonliteral -ggdb
 
 noinst_LIBRARIES = libpassword.a
 noinst_HEADERS = password.h info.h utility.h
-
 libpassword_a_SOURCES = $(libpassword_a_HEADERS)  password.c info.c utility.c
