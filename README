@@ -26,7 +26,7 @@ Install dependencies on Ubuntu
 Install dependencies on Fedora
 
 	sudo dnf update
-	sudo dnf install gcc automake autoconf autoconf autoconf-archive
+	sudo dnf install gcc automake autoconf autoconf-archive
 
 Building
 --------
