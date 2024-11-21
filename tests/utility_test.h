@@ -1,7 +1,7 @@
 /* utility_test.h
 
    Copyright (C) 2022-2024 Ivan Guerreschi.
-   
+
    This file is part of cpwd.
 
    cpwd is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #ifndef UTILITY_TEST_H
 #define UTILITY_TEST_H
 
+/* defines a constant for the test file name. */
 #define NAMEFILETEST "/.passwordtest"
 
 #endif /* UTILITY_TEST_H */

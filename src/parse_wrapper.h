@@ -1,7 +1,7 @@
 /* parse_wrapper.h
 
    Copyright (C) 2022-2024 Ivan Guerreschi.
-   
+
    This file is part of cpwd.
 
    cpwd is free software: you can redistribute it and/or modify
@@ -20,18 +20,21 @@
 #ifndef PARSE_WRAPPER_H
 #define PARSE_WRAPPER_H
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
+/* This function likely takes a `const char *input_row` argument which might be
+   a number representing the number of credentials to print or some other input
+   relevant to displaying all credentials. */
+void print_all_credential (const char *input_row);
 
-  void print_all_credential (const char *input_row);
-  void create_credential (const char *new_credential);
-  void search_credential (const char *search_key);
-  void delete_credential (const char *input_row);
+/* This function likely takes a `const char *new_credential` argument which
+   contains the information for a new credential to be created. */
+void create_credential (const char *new_credential);
 
-#ifdef __cplusplus
-}
-#endif
+/* This function likely takes a `const char *search_key` argument which
+   specifies the key to search for within the stored credentials. */
+void search_credential (const char *search_key);
 
-#endif				/* PARSE_WRAPPER_H */
+/* This function likely takes a `const char *input_row` argument which might be
+   an identifier for the credential to be deleted. */
+void delete_credential (const char *input_row);
+
+#endif /* PARSE_WRAPPER_H */

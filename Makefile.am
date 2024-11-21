@@ -21,4 +21,5 @@ SUBDIRS = lib/ \
 	src/ \
 	tests/
 
-dist_doc_DATA = README
+EXTRA_DIST = man/cpwd.1
+man_MANS = man/cpwd.1

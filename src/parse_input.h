@@ -1,7 +1,7 @@
 /* parse_input.h
 
    Copyright (C) 2022-2024 Ivan Guerreschi.
-   
+
    This file is part of cpwd.
 
    cpwd is free software: you can redistribute it and/or modify
@@ -20,6 +20,15 @@
 #ifndef PARSE_INPUT_H
 #define PARSE_INPUT_H
 
+/* This function likely takes two arguments:
+     - `int argc`: An integer representing the number of arguments passed to the program
+        (including the program name itself).
+     - `char **argv`: An array of character pointers, where each element points to a string
+        argument passed to the program.
+
+   The function's purpose is to parse the command-line arguments provided to the program.
+   It's likely responsible for identifying the options and arguments specified by the user
+   and taking appropriate actions based on those arguments. */
 void parsing (int argc, char **argv);
 
 #endif /* PARSE_INPUT_H */

@@ -1,7 +1,7 @@
 /* password.c
 
    Copyright (C) 2022-2024 Ivan Guerreschi.
-   
+
    This file is part of cpwd.
 
    cpwd is free software: you can redistribute it and/or modify
@@ -24,8 +24,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* Opens a file in append and read+write mode.
+   If opening fails, prints an error message and exits. */
 void
-open_file (FILE ** file, const char *filename)
+open_file (FILE **file, const char *filename)
 {
   if ((*file = fopen (filename, "a+")) == NULL)
     {
@@ -34,8 +36,10 @@ open_file (FILE ** file, const char *filename)
     }
 }
 
+/* Creates a file in write+read mode.
+   If creation fails, prints an error message and exits. */
 void
-create_file (FILE ** file, const char *filename)
+create_file (FILE **file, const char *filename)
 {
   if ((*file = fopen (filename, "w+")) == NULL)
     {
@@ -44,9 +48,11 @@ create_file (FILE ** file, const char *filename)
     }
 }
 
+/* Opens a file in read+write mode.
+   If opening fails, prints an error message and exits. */
 void
-read_file (FILE ** file, const char *filename)
-{  
+read_file (FILE **file, const char *filename)
+{
   if ((*file = fopen (filename, "r+")) == NULL)
     {
       perror ("Error read file");
@@ -54,8 +60,10 @@ read_file (FILE ** file, const char *filename)
     }
 }
 
+/* Closes a file.
+   If closing fails, prints an error message and exits. */
 void
-close_file (FILE ** file)
+close_file (FILE **file)
 {
   if (fclose (*file) != 0)
     {
@@ -64,21 +72,27 @@ close_file (FILE ** file)
     }
 }
 
+/* Counts the number of rows (lines) in a file. */
 size_t
-count_row (FILE * file)
+count_row (FILE *file)
 {
   int c;
   size_t count = 0;
 
+  /* Read characters until EOF */
   for (c = getc (file); c != EOF; c = getc (file))
+    /* Increment count for each newline character */
     if (c == '\n')
       count++;
 
   return count;
 }
 
+/* Allocates memory for an array of credential structs and reads data from a file.
+   If memory allocation fails, prints an error message and exits.
+   Reads website, username, email, and password from each line. */
 credential_t *
-all (FILE * file, size_t row)
+all (FILE *file, size_t row)
 {
   credential_t *credential = calloc (row + 1, sizeof (credential_t));
 
@@ -88,6 +102,7 @@ all (FILE * file, size_t row)
       exit (EXIT_FAILURE);
     }
 
+  /* Allocate memory for website, username, email, and password for each credential */
   for (size_t i = 0; i < row; i++)
     {
       credential[i].website = malloc (100 * sizeof (char));
@@ -119,6 +134,7 @@ all (FILE * file, size_t row)
 	}
     }
 
+  /* Read data from the file */
   int i = 0;
   int res = 0;
 
@@ -149,10 +165,16 @@ all (FILE * file, size_t row)
   return credential;
 }
 
+/* Creates a new credential in the file.
+   Allocates memory for a new string, concatenates the website, username, email, and password,
+   and writes the new credential to the file.
+   Frees allocated memory. */
 void
-create (FILE * file, credential_t credential)
+create (FILE *file, credential_t credential)
 {
+  /* Buffer to hold temporary data during string concatenation */
   char buffer[BUFSIZ];
+  /*  Allocate initial memory for the new credential string */
   char *new_credential = calloc (1, 1);
 
   if (!new_credential)
@@ -162,6 +184,7 @@ create (FILE * file, credential_t credential)
     }
   else
     {
+      /* Concatenate website, username, email, and password with spaces */
       strcpy (buffer, credential.website);
       new_credential =
 	realloc (new_credential,
@@ -210,6 +233,7 @@ create (FILE * file, credential_t credential)
       else
 	strcat (new_credential, strcat (buffer, " "));
 
+      /* Write the formatted new credential string to the file followed by a newline */
       fprintf (file, "%s\n", new_credential);
     }
 
@@ -220,9 +244,12 @@ create (FILE * file, credential_t credential)
   free (new_credential);
 }
 
+/* Searches for a given key (website, username, email, or password) in the credentials.
+   Returns an array of indices where the key was found. */
 int *
-search (credential_t * credential, size_t row, const char *key)
+search (credential_t *credential, size_t row, const char *key)
 {
+  /* Allocates memory for an array of integers to store search results. */
   int *results = malloc (row * sizeof (int));
   if (results == NULL)
     {
@@ -232,28 +259,37 @@ search (credential_t * credential, size_t row, const char *key)
   int i = 0;
   for (i = 0; i < (int) row; i++)
     {
+      /* Check if the key matches any of the fields in the current credential */
       if (strcmp (credential[i].website, key) == 0 ||
 	  strcmp (credential[i].username, key) == 0 ||
 	  strcmp (credential[i].email, key) == 0 ||
 	  strcmp (credential[i].password, key) == 0)
 	{
+	  /* Set the index to the current position if a match is found */
 	  results[i] = i;
 	}
       else
+	/* Set the index to -1 if no match is found */
 	results[i] = -1;
     }
 
   return results;
 }
 
+/* Deletes a credential from the file by copying all lines except the specified
+   line to a temporary file. */
 void
-delete (FILE * file, FILE * tmp_file, const int line)
+delete (FILE *file, FILE *tmp_file, const int line)
 {
+  /* Buffer to store a line of text from the file */
   char buffer[BUFSIZ];
   int count = 1;
 
+  /* Read lines from the original file */
   while ((fgets (buffer, BUFSIZ, file)) != NULL)
     {
+      /* If the current line is not the one to be deleted, write it to the
+         temporary file */
       if (line != count)
 	fputs (buffer, tmp_file);
 

@@ -1,7 +1,7 @@
 /* utility.c
 
    Copyright (C) 2022-2024 Ivan Guerreschi.
-   
+
    This file is part of cpwd.
 
    cpwd is free software: you can redistribute it and/or modify
@@ -25,23 +25,31 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+/* This function get complete file path for the .password file.
+   The function returns the allocated memory containing the full path to the filename. */
 char *
 file_name (const char *file_password)
 {
+  /* Get the user's home directory */
   char *home_dir = getenv ("HOME");
+  /* If HOME environment variable is not set,
+     try to get it from the password database */
   if (home_dir == NULL)
     {
       struct passwd *pwd = getpwuid (getuid ());
       if (pwd == NULL)
-        {
-          perror ("Error get HOME variable");
-          return NULL;
-        }
+	{
+	  perror ("Error get HOME variable");
+	  return NULL;
+	}
       home_dir = pwd->pw_dir;
     }
 
+  /* Calculate the total length needed for the filename,
+     including the null terminator */
   size_t len = strlen (home_dir) + strlen (file_password) + 1;
 
+  /* Allocate memory for the filename string */
   char *file = malloc (len);
   if (file == NULL)
     {
@@ -49,14 +57,18 @@ file_name (const char *file_password)
       return NULL;
     }
 
+  /* Format the filename by concatenating the home directory
+     and the file password */
   snprintf (file, len, "%s%s", home_dir, file_password);
 
   return file;
 }
 
+/* This function remove file */
 int
 remove_file (const char *file)
 {
+  /* Attempt to remove the file specified by the `file` argument */
   if (remove (file) == 0)
     return 0;
   else
@@ -66,9 +78,11 @@ remove_file (const char *file)
     }
 }
 
+/* This function rename file */
 int
 rename_file (const char *old_file, const char *new_file)
 {
+  /* Attempt to rename the file from `old_file` to `new_file` */
   if (rename (old_file, new_file) == 0)
     return 0;
   else

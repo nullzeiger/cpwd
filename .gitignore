@@ -67,3 +67,4 @@ remove_file_password_test
 search_password_test
 TAGS
 *~
+*.gz

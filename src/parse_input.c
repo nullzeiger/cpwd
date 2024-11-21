@@ -1,7 +1,7 @@
 /* parse_input.c
 
    Copyright (C) 2022-2024 Ivan Guerreschi.
-   
+
    This file is part of cpwd.
 
    cpwd is free software: you can redistribute it and/or modify
@@ -26,13 +26,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* This function is responsible for parsing the command-line
+   arguments provided to the program. */
 void
 parsing (int argc, char **argv)
 {
   int opt;
 
+  /* Define short option string */
   const char *short_opts = "a::c:d:hs:v";
 
+  /* Define long options array */
   static struct option long_options[] = {
     {"all", optional_argument, 0, 'a'},
     {"create", required_argument, 0, 'c'},
@@ -45,11 +49,14 @@ parsing (int argc, char **argv)
 
   while (1)
     {
+      /* Get the next option using getopt_long */
       opt = getopt_long (argc, argv, short_opts, long_options, 0);
 
+      /* If there are no more options, break the loop */
       if (opt == -1)
 	break;
 
+      /* Switch statement to handle different options */
       switch (opt)
 	{
 	case 'a':

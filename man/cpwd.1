@@ -1,0 +1,101 @@
+.TH CPWD 1 "2024-11-20" "" "cpwd manual"
+.SH NAME
+cpwd \- Simple Command-Line Password Management Tool
+.SH SYNOPSIS
+.B cpwd
+.RI [ options ]
+.SH DESCRIPTION
+.B cpwd
+is command-line interface for managing passwords locally.
+It securely stores credentials in a
+.I .password
+file located in the user's home directory.
+.SS Security Notes
+.IP \[bu] 2
+Credentials are stored locally in the user's home directory
+.IP \[bu] 2
+Users are responsible for securing their home directory
+.IP \[bu] 2
+Recommended to use with appropriate file permissions
+.SH OPTIONS
+.TP
+.B \-c, \-\-create"WEBSITE USERNAME EMAIL PASSWORD"
+Create a new password entry. Provide all four parameters in quotes.
+.TP
+.B \-a, \-\-all [NUM]
+Display stored credentials.
+.RS
+.IP \[bu] 2
+Without NUM: Shows all entries
+.IP \[bu] 2
+With NUM: Displays first NUM entries
+.TP
+.B \-s, \-\-search KEYWORD
+Search credentials by matching any field (website, username, email).
+.TP
+.B \-d, \-\-delete NUM
+Delete a credential by the number.
+.TP
+.B \-h, \-\-help
+Display comprehensive help message and usage instructions.
+.TP
+.B \-v, \-\-version
+Show current version of cpwd.
+.SH FILES
+.I ~/.password
+Local file storing.
+.SH EXAMPLES
+.SS Basic Usage
+.nf
+.RS
+# Create a new credential
+cpwd \-c "amazon.com johnsmith john@email.com secretpass123"
+
+# List all credentials
+cpwd \-a
+
+# List first 5 credentials
+cpwd \-a 5
+
+# Search for GitHub-related credentials
+cpwd \-s github
+
+# Delete number third credential
+cpwd \-d 3
+.RE
+.fi
+.SH AUTHOR
+Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
+.SH "REPORTING BUGS"
+Report bugs and issues at: https://github.com/nullzeiger/cpwd/issues
+or email.
+.SH COPYRIGHT
+.SS GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+.PP
+Copyright (C) 2007 Free Software Foundation, Inc. https://fsf.org/
+.PP
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+.SS Preamble
+The GNU General Public License is a free, copyleft license for
+software and other kinds of works.
+.PP
+The licenses for most software and other practical works are designed
+to take away your freedom to share and change the works.  By contrast,
+the GNU General Public License is intended to guarantee your freedom to
+share and change all versions of a program--to make sure it remains free
+software for all its users.
+.PP
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+.PP
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see https://www.gnu.org/licenses/.
+.SH "FULL LICENSE"
+For the complete GNU General Public License text, visit:
+.UR https://www.gnu.org/licenses/gpl-3.0.html
+https://www.gnu.org/licenses/gpl-3.0.html
+.UE

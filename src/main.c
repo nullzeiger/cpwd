@@ -1,9 +1,9 @@
 /* main.c
-   
+
    Copyright (C) 2022-2024 Ivan Guerreschi.
-   
+
    This file is part of cpwd.
-   
+
    cpwd is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
@@ -20,6 +20,18 @@
 #include "parse_input.h"
 #include <stdlib.h>
 
+/* The main function is the entry point of the program.
+
+   This function takes two arguments:
+     - argc: An integer representing the number of arguments passed to the program
+            (including the program name itself).
+     - argv: An array of character pointers, where each element points to a string
+            argument passed to the program.
+
+   The function calls the `parsing` function
+   to handle parsing the command-line arguments.
+
+   Finally, the function returns `EXIT_SUCCESS` to indicate successful program execution. */
 int
 main (int argc, char **argv)
 {

@@ -1,7 +1,7 @@
 /* info.h
 
    Copyright (C) 2022-2024 Ivan Guerreschi.
-   
+
    This file is part of cpwd.
 
    cpwd is free software: you can redistribute it and/or modify
@@ -24,10 +24,16 @@
 #include <config.h>
 #endif
 
+
+/* Returns the version string of the cpwd package. */
 const char *version (void);
+/* Returns the package name of the cpwd package. */
 const char *package (void);
+/* Returns the bug report address for the cpwd package. */
 const char *bugreport (void);
+/* Returns the license information for the cpwd package. */
 const char *license (void);
+/* Returns the help text for the cpwd package. */
 const char *help (void);
 
 #endif /* INFO_H */
