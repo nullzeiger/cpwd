@@ -1,0 +1,43 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Create directories
+      run: mkdir -p bin obj
+
+    - name: Build source
+      run: make src
+
+    - name: Build tests
+      run: make tests
+
+    - name: Run tests
+      run: make runtest
+
+  install:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install
+      run: |
+        mkdir -p $HOME/.local/bin
+        make install
+
+    - name: Verify installation
+      run: |
+        test -f $HOME/.local/bin/cpwd || exit 1
