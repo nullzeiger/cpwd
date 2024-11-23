@@ -28,60 +28,59 @@
 
 /* This function is responsible for parsing the command-line
    arguments provided to the program. */
-void
-parsing (int argc, char **argv)
+void parsing(int argc, char **argv)
 {
-  int opt;
+	int opt;
 
-  /* Define short option string */
-  const char *short_opts = "a::c:d:hs:v";
+	/* Define short option string */
+	const char *short_opts = "a::c:d:hs:v";
 
-  /* Define long options array */
-  static struct option long_options[] = {
-    {"all", optional_argument, 0, 'a'},
-    {"create", required_argument, 0, 'c'},
-    {"delete", required_argument, 0, 'd'},
-    {"help", no_argument, 0, 'h'},
-    {"search", required_argument, 0, 's'},
-    {"version", no_argument, 0, 'v'},
-    {0, 0, 0, 0}
-  };
+	/* Define long options array */
+	static struct option long_options[] = {
+		{ "all", optional_argument, 0, 'a' },
+		{ "create", required_argument, 0, 'c' },
+		{ "delete", required_argument, 0, 'd' },
+		{ "help", no_argument, 0, 'h' },
+		{ "search", required_argument, 0, 's' },
+		{ "version", no_argument, 0, 'v' },
+		{ 0, 0, 0, 0 }
+	};
 
-  while (1)
-    {
-      /* Get the next option using getopt_long */
-      opt = getopt_long (argc, argv, short_opts, long_options, 0);
+	while (1) {
+		/* Get the next option using getopt_long */
+		opt = getopt_long(argc, argv, short_opts, long_options, 0);
 
-      /* If there are no more options, break the loop */
-      if (opt == -1)
-	break;
+		/* If there are no more options, break the loop */
+		if (opt == -1)
+			break;
 
-      /* Switch statement to handle different options */
-      switch (opt)
-	{
-	case 'a':
-	  optarg ? print_all_credential (optarg) : print_all_credential ("0");
-	  break;
-	case 'c':
-	  create_credential (optarg);
-	  break;
-	case 'd':
-	  delete_credential (optarg);
-	  break;
-	case 'h':
-	  printf ("%s\n%s\n%s\n", help (), license (), bugreport ());
-	  break;
-	case 's':
-	  search_credential (optarg);
-	  break;
-	case 'v':
-	  printf ("%s\n", package ());
-	  break;
-	case '?':
-	  printf ("%s\n", help ());
-	  break;
-	default:
-	  abort ();
+		/* Switch statement to handle different options */
+		switch (opt) {
+		case 'a':
+			optarg ? print_all_credential(optarg) :
+			    print_all_credential("0");
+			break;
+		case 'c':
+			create_credential(optarg);
+			break;
+		case 'd':
+			delete_credential(optarg);
+			break;
+		case 'h':
+			printf("%s\n%s\n%s\n", help(), license(),
+			       bugreport());
+			break;
+		case 's':
+			search_credential(optarg);
+			break;
+		case 'v':
+			printf("%s\n", package());
+			break;
+		case '?':
+			printf("%s\n", help());
+			break;
+		default:
+			abort();
+		}
 	}
-    }
 }

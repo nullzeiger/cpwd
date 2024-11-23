@@ -29,6 +29,6 @@
    The function's purpose is to parse the command-line arguments provided to the program.
    It's likely responsible for identifying the options and arguments specified by the user
    and taking appropriate actions based on those arguments. */
-void parsing (int argc, char **argv);
+void parsing(int argc, char **argv);
 
-#endif /* PARSE_INPUT_H */
+#endif				/* PARSE_INPUT_H */

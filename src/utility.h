@@ -29,18 +29,18 @@
    which might be a directory path or filename. It returns a `char *` pointer to a string
    containing the full path to the password file. The function might perform some processing
    on the input argument to construct the complete path (e.g., prepend a leading directory path). */
-char *file_name (const char *file_password);
+char *file_name(const char *file_password);
 
 /* This function likely takes a `const char *file` argument which is the path to a file.
    It returns an integer indicating the success or failure of deleting the specified file.
    A return value of 0 typically indicates success, while non-zero values might indicate errors. */
-int remove_file (const char *file);
+int remove_file(const char *file);
 
 /* This function likely takes two arguments:
      - `const char *old_file`: The path to the source file to be renamed.
      - `const char *new_file`: The path to the destination file where the source file will be renamed to.
    It returns an integer indicating the success or failure of renaming the file.
    A return value of 0 typically indicates success, while non-zero values might indicate errors.  */
-int rename_file (const char *old_file, const char *new_file);
+int rename_file(const char *old_file, const char *new_file);
 
-#endif /* UTILITY_H */
+#endif				/* UTILITY_H */

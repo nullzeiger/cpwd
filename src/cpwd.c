@@ -1,4 +1,4 @@
-/* main.c
+/* cpwd.c
 
    Copyright (C) 2022-2024 Ivan Guerreschi.
 
@@ -32,10 +32,9 @@
    to handle parsing the command-line arguments.
 
    Finally, the function returns `EXIT_SUCCESS` to indicate successful program execution. */
-int
-main (int argc, char **argv)
+int main(int argc, char **argv)
 {
-  parsing (argc, argv);
+	parsing(argc, argv);
 
-  return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }
