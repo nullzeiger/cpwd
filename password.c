@@ -1,21 +1,22 @@
 /* password.c
-
-   Copyright (C) 2022-2024 Ivan Guerreschi.
-
-   This file is part of cpwd.
-
-   cpwd is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
-
-   cpwd is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
+ *
+ *
+ * Copyright (C) 2022-2024 Ivan Guerreschi.
+ *
+ * This file is part of cpwd.
+ *
+ * cpwd is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * cpwd is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include "password.h"
 #include "utility.h"
@@ -25,7 +26,7 @@
 #include <string.h>
 
 /* Opens a file in append and read+write mode.
-   If opening fails, prints an error message and exits. */
+ * If opening fails, prints an error message and exits. */
 void open_file(FILE **file, const char *filename)
 {
 	if ((*file = fopen(filename, "a+")) == NULL) {
@@ -35,7 +36,7 @@ void open_file(FILE **file, const char *filename)
 }
 
 /* Creates a file in write+read mode.
-   If creation fails, prints an error message and exits. */
+ * If creation fails, prints an error message and exits. */
 void create_file(FILE **file, const char *filename)
 {
 	if ((*file = fopen(filename, "w+")) == NULL) {
@@ -45,7 +46,7 @@ void create_file(FILE **file, const char *filename)
 }
 
 /* Opens a file in read+write mode.
-   If opening fails, prints an error message and exits. */
+ * If opening fails, prints an error message and exits. */
 void read_file(FILE **file, const char *filename)
 {
 	if ((*file = fopen(filename, "r+")) == NULL) {
@@ -55,7 +56,7 @@ void read_file(FILE **file, const char *filename)
 }
 
 /* Closes a file.
-   If closing fails, prints an error message and exits. */
+ * If closing fails, prints an error message and exits. */
 void close_file(FILE **file)
 {
 	if (fclose(*file) != 0) {
@@ -80,11 +81,11 @@ size_t count_row(FILE *file)
 }
 
 /* Allocates memory for an array of credential structs and reads data from a file.
-   If memory allocation fails, prints an error message and exits.
-   Reads website, username, email, and password from each line. */
-credential_t *all(FILE *file, size_t row)
+ * If memory allocation fails, prints an error message and exits.
+ * Reads website, username, email, and password from each line. */
+struct credential *all(FILE *file, size_t row)
 {
-	credential_t *credential = calloc(row + 1, sizeof(credential_t));
+	struct credential *credential = calloc(row + 1, sizeof(struct credential));
 
 	if (!credential) {
 		perror("Error allocation failed");
@@ -148,14 +149,14 @@ credential_t *all(FILE *file, size_t row)
 }
 
 /* Creates a new credential in the file.
-   Allocates memory for a new string, concatenates the website, username, email, and password,
-   and writes the new credential to the file.
-   Frees allocated memory. */
-void create(FILE *file, credential_t credential)
+ * Allocates memory for a new string, concatenates the website, username, email, and password,
+ * and writes the new credential to the file.
+ * Frees allocated memory. */
+void create(FILE *file, struct credential credential)
 {
 	/* Buffer to hold temporary data during string concatenation */
 	char buffer[BUFSIZ];
-	/*  Allocate initial memory for the new credential string */
+	/* Allocate initial memory for the new credential string */
 	char *new_credential = calloc(1, 1);
 
 	if (!new_credential) {
@@ -215,8 +216,8 @@ void create(FILE *file, credential_t credential)
 }
 
 /* Searches for a given key (website, username, email, or password) in the credentials.
-   Returns an array of indices where the key was found. */
-int *search(credential_t *credential, size_t row, const char *key)
+ * Returns an array of indices where the key was found. */
+int *search(struct credential *credential, size_t row, const char *key)
 {
 	/* Allocates memory for an array of integers to store search results. */
 	int *results = malloc(row * sizeof(int));
@@ -242,7 +243,7 @@ int *search(credential_t *credential, size_t row, const char *key)
 }
 
 /* Deletes a credential from the file by copying all lines except the specified
-   line to a temporary file. */
+ * line to a temporary file. */
 void delete(FILE *file, FILE *tmp_file, const int line)
 {
 	/* Buffer to store a line of text from the file */

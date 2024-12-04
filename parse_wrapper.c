@@ -1,21 +1,21 @@
 /* parse_wrapper.c
-
-   Copyright (C) 2022-2024 Ivan Guerreschi.
-
-   This file is part of cpwd.
-
-   cpwd is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
-
-   cpwd is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
+ *
+ * Copyright (C) 2022-2024 Ivan Guerreschi.
+ *
+ * This file is part of cpwd.
+ *
+ * cpwd is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * cpwd is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* Define `_GNU_SOURCE` for functions like `strndupa` */
 #define  _GNU_SOURCE
@@ -43,7 +43,7 @@ void print_all_credential(const char *number_row)
 	/* Get the number of rows (credentials) */
 	size_t row = count_row(file_row);
 	/* Allocate memory for an array of credential structs */
-	credential_t *credential = all(file_password, row);
+	struct credential *credential = all(file_password, row);
 
 	/* Check if the input argument is a number */
 	if (isdigit(number_row[0]))
@@ -81,7 +81,7 @@ void print_all_credential(const char *number_row)
 void create_credential(const char *new_credential)
 {
 	/* Initialize a new credential struct */
-	credential_t credential = { 0, 0, 0, 0 };
+	struct credential credential = { 0, 0, 0, 0 };
 	const char *delimiters = " ";
 	char *token;
 	char *copy_credential;
@@ -205,7 +205,7 @@ void search_credential(const char *search_key)
 	/* Get the number of rows (credentials) */
 	size_t row = count_row(file_row);
 	/* Allocate memory for an array of credential structs */
-	credential_t *credential = all(file_password, row);
+	struct credential *credential = all(file_password, row);
 
 	/* Search for the specified search key in the credentials */
 	int *result = search(credential, row, search_key);

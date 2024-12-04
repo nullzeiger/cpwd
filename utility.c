@@ -1,21 +1,21 @@
 /* utility.c
-
-   Copyright (C) 2022-2024 Ivan Guerreschi.
-
-   This file is part of cpwd.
-
-   cpwd is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
-
-   cpwd is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
+ *
+ * Copyright (C) 2022-2024 Ivan Guerreschi.
+ *
+ * This file is part of cpwd.
+ *
+ * cpwd is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * cpwd is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
 #include "utility.h"
 #include <pwd.h>
@@ -26,13 +26,13 @@
 #include <unistd.h>
 
 /* This function get complete file path for the .password file.
-   The function returns the allocated memory containing the full path to the filename. */
+ * The function returns the allocated memory containing the full path to the filename. */
 char *file_name(const char *file_password)
 {
 	/* Get the user's home directory */
 	char *home_dir = getenv("HOME");
 	/* If HOME environment variable is not set,
-	   try to get it from the password database */
+	 *  try to get it from the password database */
 	if (home_dir == NULL) {
 		struct passwd *pwd = getpwuid(getuid());
 		if (pwd == NULL) {
@@ -43,7 +43,7 @@ char *file_name(const char *file_password)
 	}
 
 	/* Calculate the total length needed for the filename,
-	   including the null terminator */
+	 * including the null terminator */
 	size_t len = strlen(home_dir) + strlen(file_password) + 1;
 
 	/* Allocate memory for the filename string */
@@ -54,7 +54,7 @@ char *file_name(const char *file_password)
 	}
 
 	/* Format the filename by concatenating the home directory
-	   and the file password */
+	 * and the file password */
 	snprintf(file, len, "%s%s", home_dir, file_password);
 
 	return file;

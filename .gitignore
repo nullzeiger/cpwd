@@ -1,2 +1,32 @@
-bin/
-obj/
+# Compiled object files
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+cpwd
+cpwdtest
+
+# Library files
+*.a
+*.lib
+
+# Debug files
+*.d
+*.DS_Store
+
+# IDE-specific files
+.vscode/
+*.suo
+*.user
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# Other common files
+cmake-build-debug/
+cmake-build-release/
+build/
+dist/
+.DS_Store

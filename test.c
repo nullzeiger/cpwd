@@ -1,9 +1,29 @@
-#include "tests.h"
-#include "../src/password.h"
-#include "../src/utility.h"
+/* test.c
+ *
+ * Copyright (C) 2022-2024 Ivan Guerreschi.
+ *
+ * This file is part of cpwd.
+ *
+ * cpwd is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * cpwd is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
+
+#include "test.h"
+#include "password.h"
+#include "utility.h"
 #include <string.h>
 #include <stdlib.h>
 
+/* Test all_password function */
 int all_password_test()
 {
 	/* Initialize a variable to store the test result (1 for fail) */
@@ -20,7 +40,7 @@ int all_password_test()
 	size_t row = count_row(file_row);
 
 	/* Allocate memory for an array of credential structs to hold the data */
-	credential_t *credential = all(file_password, row);
+	struct credential *credential = all(file_password, row);
 
 	/* Check if the first credential in the array matches the expected data */
 	if (strncmp(credential[0].website, "webpippo", 8) == 0 &&
@@ -48,6 +68,7 @@ int all_password_test()
 	return value;
 }
 
+/* Test delete_password function */
 int delete_password_test()
 {
 	/* Initialize a variable to store the test result (1 for fail) */
@@ -66,7 +87,7 @@ int delete_password_test()
 	size_t row = count_row(file_row);
 
 	/* Allocate memory for an array of credential structs to hold the data */
-	credential_t *credential = all(file_password, row);
+	struct credential *credential = all(file_password, row);
 
 	/* Check if the first credential in the array matches the expected data */
 	if (strncmp(credential[0].website, "webpippo", 8) == 0 &&
@@ -94,6 +115,7 @@ int delete_password_test()
 	return value;
 }
 
+/* Test new_password function */
 int new_password_test()
 {
 	/* Initialize a variable to store the test result (0 for success) */
@@ -109,7 +131,7 @@ int new_password_test()
 	create_file(&file_password, file);
 
 	/* Define a credential struct to hold the test data */
-	credential_t credential;
+	struct credential credential;
 
 	/* Allocate memory for the website field of the credential struct */
 	credential.website = malloc(50 * sizeof(char));
@@ -177,6 +199,7 @@ int new_password_test()
 	return value;
 }
 
+/* Remove tmp file for test */
 int remove_password_test_file()
 {
 	/* Initialize a variable to store the test result (1 for fail) */
@@ -200,6 +223,7 @@ int remove_password_test_file()
 	return value;
 }
 
+/* Test search_password function */
 int search_password_test()
 {
 	 /* Initialize a variable to store the test result (1 for fail) */
@@ -218,7 +242,7 @@ int search_password_test()
 	size_t row = count_row(file_row);
 
 	/* Read all credentials from the test file and store them in an array */
-	credential_t *credential = all(file_password, row);
+	struct credential *credential = all(file_password, row);
 
 	/* Define the website (key) to search for */
 	const char *key = "webpippo";

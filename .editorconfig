@@ -1,4 +1,4 @@
-# cpwd.yml
+# .editorconfig
 #
 # Copyright (C) 2022-2024 Ivan Guerreschi
 #
@@ -18,24 +18,18 @@
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
 
+root = true
 
-name: Build and Test
+[{*.{c,h,mk,},Makefile,Makefile.*}]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = tab
+indent_size = 8
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-    - name: Build source code
-      run: make all
-
-    - name: Run test
-      run: make runtest
+[*.yaml]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
