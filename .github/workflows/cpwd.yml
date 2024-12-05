@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install Autotools
-        run: apt-get install autotools-dev autoconf
+        run: sudo apt-get install autotools-dev autoconf -y
 
       - name: Instantiate the build system
         run: ./autoreconf --install
