@@ -1,4 +1,4 @@
-# cpwd.yml
+# test/Makefile.am
 #
 # Copyright (C) 2022-2024 Ivan Guerreschi
 #
@@ -17,25 +17,18 @@
 # You should have received a copy of the GNU General Public License
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
+include $(top_srcdir)/flymake.mk
 
+AM_CFLAGS = -Wall -Wextra -Wdouble-promotion -Wformat-security \
+	-Wformat-signedness -Winit-self -Wshift-overflow=2 \
+	-Wswitch-default -Wstrict-overflow=4 \
+	-Warith-conversion -Wduplicated-branches \
+	-Wduplicated-cond -Wshadow -Wcast-qual \
+	-Wconversion -Wdate-time -Wstrict-prototypes \
+	-Wmissing-prototypes -Winvalid-pch -Wredundant-decls \
+	-Wformat-nonliteral -ggdb
 
-name: Build and Test
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build source code
-        run: make all
-
-      - name: Run test
-        run: make runtest
+noinst_HEADERS = test.h
+TESTS = cpwdtest
+check_PROGRAMS = $(TESTS)
+cpwdtest_SOURCES = cpwdtest.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c

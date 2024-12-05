@@ -1,6 +1,6 @@
-# cpwd.yml
+# configure.ac
 #
-# Copyright (C) 2022-2024 Ivan Guerreschi
+# Copyright (C) 2022-2024 Ivan Guerreschi.
 #
 # This file is part of cpwd.
 #
@@ -17,25 +17,16 @@
 # You should have received a copy of the GNU General Public License
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
+AC_INIT([cpwd], [0.15], [ivan.guerreschi.dev@gmail.com])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign foreign subdir-objects])
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR([src/cpwd.c])
+AC_PROG_CC
 
+AC_CONFIG_FILES([
+ Makefile
+ src/Makefile
+ test/Makefile
+])
 
-name: Build and Test
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build source code
-        run: make all
-
-      - name: Run test
-        run: make runtest
+AC_OUTPUT

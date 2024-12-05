@@ -1,4 +1,4 @@
-/* cpwd.c
+/* cpwdtest.c 
  *
  * Copyright (C) 2022-2024 Ivan Guerreschi.
  *
@@ -17,24 +17,25 @@
  * You should have received a copy of the GNU General Public License
  * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#include "parse_input.h"
-#include <stdlib.h>
+#include "test.h"
 
-/* The main function is the entry point of the program.
- *
- * This function takes two arguments:
- *   - argc: An integer representing the number of arguments passed to the program
- *          (including the program name itself).
- *   - argv: An array of character pointers, where each element points to a string
- *          argument passed to the program.
- *
- * The function calls the `parsing` function
- * to handle parsing the command-line arguments.
- *
- * Finally, the function returns `EXIT_SUCCESS` to indicate successful program execution. */
-int main(int argc, char **argv)
+/* Test all wrapper function */
+int
+main (void)
 {
-	parsing(argc, argv);
+  ASSERT_TEST ("create new password", new_password_test ());
+  ASSERT_TEST ("all password", all_password_test ());
+  ASSERT_TEST ("search password", search_password_test ());
+  ASSERT_TEST ("delete password", delete_password_test ());
 
-	return EXIT_SUCCESS;
+  if (remove_password_test_file () == 0)
+    {
+      puts ("File for test removed");
+    }
+  else
+    {
+      puts ("Error removed test file");
+    }
+
+  return 0;
 }

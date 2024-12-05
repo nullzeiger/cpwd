@@ -1,4 +1,4 @@
-# .editorconfig
+# flymake.mk
 #
 # Copyright (C) 2022-2024 Ivan Guerreschi
 #
@@ -17,19 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
+.PHONY: check-syntax
 
-root = true
-
-[{*.{c,h,mk,},Makefile,Makefile.*}]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
-indent_style = tab
-indent_size = 8
-
-[*.yaml]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
-indent_style = space
-indent_size = 2
+check-syntax:
+	$(CC) -I $(top_srcdir)/src -I $(top_srcdir)/test -Wall -Werror -o /dev/null -S ${CHK_SOURCES} || true

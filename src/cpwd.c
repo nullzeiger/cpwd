@@ -1,4 +1,4 @@
-/* info.h
+/* cpwd.c
  *
  * Copyright (C) 2022-2024 Ivan Guerreschi.
  *
@@ -17,23 +17,25 @@
  * You should have received a copy of the GNU General Public License
  * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef INFO_H
-#define INFO_H
+#include "parse_input.h"
+#include <stdlib.h>
 
-/* Macro for info */
-#define VERSION "1.5"
-#define PACKAGE_BUGREPORT "ivan.guerreschi.dev@gmail.com github.com/nullzeiger/cpwd/issue"
-#define PACKAGE_STRING "cpwd version 1.5"
+/* The main function is the entry point of the program.
+ *
+ * This function takes two arguments:
+ *   - argc: An integer representing the number of arguments passed to the program
+ *          (including the program name itself).
+ *   - argv: An array of character pointers, where each element points to a string
+ *          argument passed to the program.
+ *
+ * The function calls the `parsing` function
+ * to handle parsing the command-line arguments.
+ *
+ * Finally, the function returns `EXIT_SUCCESS` to indicate successful program execution. */
+int
+main (int argc, char **argv)
+{
+  parsing (argc, argv);
 
-/* Returns the version string of the cpwd package. */
-const char *version(void);
-/* Returns the package name of the cpwd package. */
-const char *package(void);
-/* Returns the bug report address for the cpwd package. */
-const char *bugreport(void);
-/* Returns the license information for the cpwd package. */
-const char *license(void);
-/* Returns the help text for the cpwd package. */
-const char *help(void);
-
-#endif /* INFO_H */
+  return EXIT_SUCCESS;
+}

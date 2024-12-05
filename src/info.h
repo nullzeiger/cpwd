@@ -1,4 +1,4 @@
-/* parse_input.h
+/* info.h
  *
  * Copyright (C) 2022-2024 Ivan Guerreschi.
  *
@@ -17,18 +17,23 @@
  * You should have received a copy of the GNU General Public License
  * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef PARSE_INPUT_H
-#define PARSE_INPUT_H
+#ifndef INFO_H
+#define INFO_H
 
-/* This function likely takes two arguments:
- *   - `int argc`: An integer representing the number of arguments passed to the program
- *      (including the program name itself).
- *   - `char **argv`: An array of character pointers, where each element points to a string
- *       argument passed to the program.
- *
- * The function's purpose is to parse the command-line arguments provided to the program.
- * It's likely responsible for identifying the options and arguments specified by the user
- * and taking appropriate actions based on those arguments. */
-void parsing(int argc, char **argv);
+/* Macro for info */
+#define VERSION "1.5"
+#define PACKAGE_BUGREPORT "ivan.guerreschi.dev@gmail.com github.com/nullzeiger/cpwd/issue"
+#define PACKAGE_STRING "cpwd version 1.5"
 
-#endif /* PARSE_INPUT_H */
+/* Returns the version string of the cpwd package. */
+const char *version (void);
+/* Returns the package name of the cpwd package. */
+const char *package (void);
+/* Returns the bug report address for the cpwd package. */
+const char *bugreport (void);
+/* Returns the license information for the cpwd package. */
+const char *license (void);
+/* Returns the help text for the cpwd package. */
+const char *help (void);
+
+#endif /* INFO_H */

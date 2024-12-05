@@ -42,10 +42,10 @@
     } while (0)
 
 /* Wrapper test function */
-int all_password_test(void);
-int delete_password_test(void);
-int new_password_test(void);
-int remove_password_test_file(void);
-int search_password_test(void);
+int all_password_test (void);
+int delete_password_test (void);
+int new_password_test (void);
+int remove_password_test_file (void);
+int search_password_test (void);
 
 #endif /* TEST */

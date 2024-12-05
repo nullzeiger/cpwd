@@ -1,4 +1,4 @@
-# cpwd.yml
+# Makefile.am
 #
 # Copyright (C) 2022-2024 Ivan Guerreschi
 #
@@ -17,25 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
+SUBDIRS = src test
+dist_doc_DATA = README
 
-
-name: Build and Test
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build source code
-        run: make all
-
-      - name: Run test
-        run: make runtest
+EXTRA_DIST = man/cpwd.1
+man_MANS = man/cpwd.1
