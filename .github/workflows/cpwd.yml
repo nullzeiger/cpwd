@@ -34,8 +34,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Autotools
+        run: apt-get install autotools-dev autoconf
+
       - name: Build source code
-        run: make all
+        run: ./autoreconf --install
+        run: ./configure
+        run: make
 
       - name: Run test
-        run: make runtest
+        run: make check
