@@ -16,16 +16,23 @@ cpwd --help     # Display help and available commands
 cpwd --version  # Show version information
 
 Building from Source
-1. Clone the repository:
-git clone https://github.com/nullzeiger/cpwd.git
-cd cpwd
+1. Install dependencies on Debin/Ubuntu
+	sudo apt update
+	sudo apt install gcc autotools-dev autoconf autoconf-archive
 
-2. Build using make:
-./configure
-make
+2. Clone the repository:
+	git clone https://github.com/nullzeiger/cpwd.git
+	cd cpwd
 
-3. Install (optional):
-sudo make install
+3. Build using make:
+	./configure
+	make
+
+4. Test
+	make check
+
+5. Install (optional):
+	sudo make install
 
 Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.

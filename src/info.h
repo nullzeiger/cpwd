@@ -20,19 +20,22 @@
 #ifndef INFO_H
 #define INFO_H
 
-/* Macro for info */
-#define VERSION "1.5"
-#define PACKAGE_BUGREPORT "ivan.guerreschi.dev@gmail.com github.com/nullzeiger/cpwd/issue"
-#define PACKAGE_STRING "cpwd version 1.5"
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
 /* Returns the version string of the cpwd package. */
 const char *version (void);
+
 /* Returns the package name of the cpwd package. */
 const char *package (void);
+
 /* Returns the bug report address for the cpwd package. */
 const char *bugreport (void);
+
 /* Returns the license information for the cpwd package. */
 const char *license (void);
+
 /* Returns the help text for the cpwd package. */
 const char *help (void);
 

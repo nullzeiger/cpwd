@@ -17,8 +17,9 @@
 # You should have received a copy of the GNU General Public License
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
-AC_INIT([cpwd], [0.15], [ivan.guerreschi.dev@gmail.com])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign foreign subdir-objects])
+AC-PREREQ([2.69])
+AC_INIT([cpwd], [0.16], [ivan.guerreschi.dev@gmail.com])
+AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([src/cpwd.c])
 AC_PROG_CC

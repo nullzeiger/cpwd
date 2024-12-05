@@ -69,7 +69,7 @@ help (void)
 {
   return "cpwd\n"
     "Options:\n"
-    "  -a    --all All credential\n"
+    "  -a     --all All credential\n"
     "  -a NUM --all NUM Number of credentials entered in the NUM input\n"
     "  -c \"WEBSITE USERNAME EMAIL PASSWORD\" Create credential\n"
     "  --create \"WEB USERNAME EMAIL PASSWORD\" Create credential\n"
