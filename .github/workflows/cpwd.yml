@@ -32,11 +32,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Autotools
-        run: sudo apt-get install autotools-dev autoconf -y
-
       - name: Instantiate the build system
-        run: ./autoreconf --install
+        run: autoreconf --install
 
       - name: Configure
         run: ./configure
