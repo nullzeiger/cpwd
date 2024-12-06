@@ -23,19 +23,27 @@
 int
 main (void)
 {
+  int test = 1;
+  
+  if (!new_password_test ())
+    test = 0;
+
+  if (!all_password_test ())
+    test = 0;
+    
+  if (!search_password_test ())
+    test = 0;
+
+  if (!delete_password_test ())
+    test = 0;
+  
   ASSERT_TEST ("create new password", new_password_test ());
   ASSERT_TEST ("all password", all_password_test ());
   ASSERT_TEST ("search password", search_password_test ());
   ASSERT_TEST ("delete password", delete_password_test ());
 
-  if (remove_password_test_file () == 0)
-    {
-      puts ("File for test removed");
-    }
-  else
-    {
-      puts ("Error removed test file");
-    }
+  if (!remove_password_test_file ())
+    test = 0;
 
-  return 0;
+  return test;
 }
