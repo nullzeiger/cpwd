@@ -1,7 +1,11 @@
+2024-12-09 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
+	* Release 1.7
+	* src/password_inpu.c Correct getopt short arg
+
 2024-12-05 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
 	* Release 1.6
 	* Return to use GNU Build System Autotools
-	* Use single file for test
+	* Use mutiple files for test
 
 2024-11-19 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
 

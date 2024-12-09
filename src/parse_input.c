@@ -35,7 +35,7 @@ parsing (int argc, char **argv)
   int opt;
 
   /* Define short option string */
-  const char *short_opts = "a::c:d:hs:v:l";
+  const char *short_opts = "a::c:d:s:vlh";
 
   /* Define long options array */
   static struct option long_options[] = {

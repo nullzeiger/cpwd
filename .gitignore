@@ -65,3 +65,4 @@ delete_password
 remove_file 
 TAGS
 *~
+*.gz
