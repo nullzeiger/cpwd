@@ -1,4 +1,4 @@
-/* new_password.c
+/* search_password.c
  *
  * Copyright (C) 2022-2024 Ivan Guerreschi.
  *

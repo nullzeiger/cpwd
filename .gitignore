@@ -58,6 +58,10 @@ Makefile
 *.log
 
 cpwd
-cpwdtest
+new_password
+all_password
+search_password
+delete_password
+remove_file 
 TAGS
 *~

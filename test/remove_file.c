@@ -1,4 +1,4 @@
-/* new_password.c
+/* remove_file.c
  *
  * Copyright (C) 2022-2024 Ivan Guerreschi.
  *
