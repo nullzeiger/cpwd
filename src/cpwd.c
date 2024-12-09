@@ -19,6 +19,7 @@
 
 #include "parse_input.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /* The main function is the entry point of the program.
  *
@@ -35,6 +36,10 @@
 int
 main (int argc, char **argv)
 {
+  puts ("cpwd  Copyright (C) 2022-2024  Ivan Guerreschi\n"
+    "This program comes with ABSOLUTELY NO WARRANTY;\n"
+    "This is free software, and you are welcome to redistribute it\n"
+    "under certain conditions; type `cpwd -l' for details.\n");
   parsing (argc, argv);
 
   return EXIT_SUCCESS;

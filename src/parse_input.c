@@ -35,7 +35,7 @@ parsing (int argc, char **argv)
   int opt;
 
   /* Define short option string */
-  const char *short_opts = "a::c:d:hs:v";
+  const char *short_opts = "a::c:d:hs:v:l";
 
   /* Define long options array */
   static struct option long_options[] = {
@@ -43,6 +43,7 @@ parsing (int argc, char **argv)
     {"create", required_argument, 0, 'c'},
     {"delete", required_argument, 0, 'd'},
     {"help", no_argument, 0, 'h'},
+    {"license", no_argument, 0, 'l'},
     {"search", required_argument, 0, 's'},
     {"version", no_argument, 0, 'v'},
     {0, 0, 0, 0}
@@ -71,6 +72,9 @@ parsing (int argc, char **argv)
 	  break;
 	case 'h':
 	  printf ("%s\n%s\n%s\n", help (), license (), bugreport ());
+	  break;
+	case 'l':
+	  printf ("%s\n", license ());
 	  break;
 	case 's':
 	  search_credential (optarg);

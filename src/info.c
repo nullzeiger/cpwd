@@ -75,6 +75,7 @@ help (void)
     "  --create \"WEB USERNAME EMAIL PASSWORD\" Create credential\n"
     "  -d NUM --delete NUM Delete credential\n"
     "  -h Help\n"
+    "  -l License\n"
     "  -s KEYWORD --search KEYWORD Search credential\n"
     "  -v Program version\n";
 }

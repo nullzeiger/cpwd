@@ -29,6 +29,11 @@ AM_CFLAGS = -Wall -Wextra -Wdouble-promotion -Wformat-security \
 	-Wformat-nonliteral -ggdb
 
 noinst_HEADERS = test.h
-TESTS = cpwdtest
+TESTS = new_password all_password search_password delete_password remove_file 
 check_PROGRAMS = $(TESTS)
-cpwdtest_SOURCES = cpwdtest.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
+
+all_password_SOURCES = all_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
+delete_password_SOURCES = delete_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
+new_password_SOURCES = new_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
+remove_file_SOURCES = remove_file.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
+search_password_SOURCES = search_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
