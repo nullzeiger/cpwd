@@ -1,4 +1,4 @@
-# Makefile.am
+# man/Makefile.am
 #
 # Copyright (C) 2022-2024 Ivan Guerreschi
 #
@@ -15,6 +15,13 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
+# along with this cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
-SUBDIRS = src test doc man
+man_MANS = cpwd.1
+
+cpwd.1: $(top_srcdir)/src/cpwd.c
+	$(HELP2MAN) -p cpwd --name="Simple Command-Line Password Management Tool" \
+		$(top_srcdir)/src/cpwd$(EXEEXT) -o $@
+
+EXTRA_DIST = $(man_MANS)
+MAINTAINERCLEANFILES = cpwd.1

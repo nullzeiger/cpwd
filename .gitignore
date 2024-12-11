@@ -66,3 +66,7 @@ remove_file
 TAGS
 *~
 *.gz
+
+/doc/cpwd.info
+/doc/texinfo.tex
+/man/cpwd.1
