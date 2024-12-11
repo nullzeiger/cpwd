@@ -18,10 +18,9 @@
 # along with this cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
 man_MANS = cpwd.1
-
-cpwd.1: $(top_srcdir)/src/cpwd.c
-	$(HELP2MAN) -p cpwd --name="Simple Command-Line Password Management Tool" \
-		$(top_srcdir)/src/cpwd$(EXEEXT) -o $@
-
 EXTRA_DIST = $(man_MANS)
-MAINTAINERCLEANFILES = cpwd.1
+MAINTAINERCLEANFILES = $(man_MANS)
+
+cpwd.1: $(top_srcdir)/src/cpwd.c $(common_mandeps)
+	$(HELP2MAN) --name="Simple Command-Line Password Management Tool" \
+		$(top_srcdir)/src/cpwd$(EXEEXT) -o $@

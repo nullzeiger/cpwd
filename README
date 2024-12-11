@@ -17,16 +17,27 @@ cpwd --version  # Show version information
 
 Building from Source
 1. Install dependencies on Debin/Ubuntu
-	sudo apt update
-	sudo apt install gcc autotools-dev autoconf autoconf-archive
+   sudo apt update
+   sudo apt install gcc autotools-dev autoconf # for buil system
+   sudo apt install help2man texinfo # for man and doc
 
-2. Clone the repository:
-	git clone https://github.com/nullzeiger/cpwd.git
-	cd cpwd
+2A. Clone the repository:
+    git clone https://github.com/nullzeiger/cpwd.git
+    cd cpwd
 
-3. Build using make:
-	./configure
-	make
+3A. Build using make:
+    autoreconf --install
+    ./configure # for more info use ./configure --help
+    make
+
+2B. Build from .tar.gz:
+    Download latest version https://github.com/nullzeiger/cpwd/releases
+    tar -xf cpwd-1.6.1.tar.gz
+    cd cpwd-1.6.1
+
+3B. Build using make:
+    ./configure # for more info use ./configure --help
+    make
 
 4. Test
 	make check

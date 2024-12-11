@@ -18,13 +18,22 @@
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
 AC-PREREQ([2.69])
+
 AC_INIT([cpwd], [1.6.1], [ivan.guerreschi.dev@gmail.com])
+
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
+
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([src/cpwd.c])
-AC_PROG_CC
 
-AM_MISSING_PROG(HELP2MAN, help2man)
+AC_PROG_CC
+AC_USE_SYSTEM_EXTENSIONS
+
+AS_IF([test $cross_compiling = no], [
+  AM_MISSING_PROG([HELP2MAN], [help2man])
+], [
+  HELP2MAN=:
+])
 
 AC_CONFIG_FILES([
  Makefile
