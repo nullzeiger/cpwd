@@ -32,6 +32,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependency
+        run: sudo apt-get install help2man texlive texinfo -y
+
       - name: Instantiate the build system
         run: autoreconf --install
 
