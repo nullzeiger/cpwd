@@ -29,8 +29,7 @@ int main(void)
 
 	if (remove_password_test_file() == 0) {
 		puts("File for test removed");
-	}
-	else {
+	} else {
 		puts("Error removed test file");
 	}
 

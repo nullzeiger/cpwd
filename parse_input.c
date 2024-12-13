@@ -38,13 +38,13 @@ void parsing(int argc, char **argv)
 
 	/* Define long options array */
 	static struct option long_options[] = {
-		{ "all", optional_argument, 0, 'a' },
-		{ "create", required_argument, 0, 'c' },
-		{ "delete", required_argument, 0, 'd' },
-		{ "help", no_argument, 0, 'h' },
-		{ "search", required_argument, 0, 's' },
-		{ "version", no_argument, 0, 'v' },
-		{ 0, 0, 0, 0 }
+		{"all", optional_argument, 0, 'a'},
+		{"create", required_argument, 0, 'c'},
+		{"delete", required_argument, 0, 'd'},
+		{"help", no_argument, 0, 'h'},
+		{"search", required_argument, 0, 's'},
+		{"version", no_argument, 0, 'v'},
+		{0, 0, 0, 0}
 	};
 
 	while (1) {
@@ -68,8 +68,7 @@ void parsing(int argc, char **argv)
 			delete_credential(optarg);
 			break;
 		case 'h':
-			printf("%s\n%s\n%s\n", help(), license(),
-			       bugreport());
+			printf("%s\n%s\n%s\n", help(), license(), bugreport());
 			break;
 		case 's':
 			search_credential(optarg);

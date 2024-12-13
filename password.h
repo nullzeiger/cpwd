@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
- 
+
 #ifndef PASSWORD_H
 #define PASSWORD_H
 
@@ -65,7 +65,7 @@ void create(FILE * file, struct credential credential);
 /* Function to search for a credential based on a key (e.g., username)
  * Searches for a credential in the array of credentials based on the given `key`.
  * Returns an array of indices of matching credentials.*/
-int *search(struct credential * credential, size_t row, const char *key);
+int *search(struct credential *credential, size_t row, const char *key);
 
 /* Function to delete a credential entry from a file
  * Deletes the credential at the specified `line` number.

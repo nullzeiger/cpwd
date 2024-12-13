@@ -44,9 +44,9 @@ int all_password_test()
 
 	/* Check if the first credential in the array matches the expected data */
 	if (strncmp(credential[0].website, "webpippo", 8) == 0 &&
-	   strncmp(credential[0].username, "pippo", 5) == 0 &&
-	   strncmp(credential[0].email, "pippo@topolandia.com", 20) == 0
-	   && strncmp(credential[0].password, "1234", 4) == 0) {
+	    strncmp(credential[0].username, "pippo", 5) == 0 &&
+	    strncmp(credential[0].email, "pippo@topolandia.com", 20) == 0
+	    && strncmp(credential[0].password, "1234", 4) == 0) {
 		/* If all fields match, set the test result to success (0) */
 		value = 0;
 	} else {
@@ -91,9 +91,9 @@ int delete_password_test()
 
 	/* Check if the first credential in the array matches the expected data */
 	if (strncmp(credential[0].website, "webpippo", 8) == 0 &&
-	   strncmp(credential[0].username, "pippo", 5) == 0 &&
-	   strncmp(credential[0].email, "pippo@topolandia.com", 20) == 0
-	   && strncmp(credential[0].password, "1234", 4) == 0) {
+	    strncmp(credential[0].username, "pippo", 5) == 0 &&
+	    strncmp(credential[0].email, "pippo@topolandia.com", 20) == 0
+	    && strncmp(credential[0].password, "1234", 4) == 0) {
 		/* If all fields match, set the test result to success (0) */
 		value = 0;
 	} else {
@@ -178,9 +178,9 @@ int new_password_test()
 
 	/* Check if the created credential data matches the expected values */
 	if ((strncmp(credential.website, "webpippo", 8) == 0) &&
-	   (strncmp(credential.username, "pippo", 5) == 0) &&
-	   (strncmp(credential.email, "pippo@topolandia.com", 20) == 0) &&
-	   (strncmp(credential.password, "1234", 4) == 0)) {
+	    (strncmp(credential.username, "pippo", 5) == 0) &&
+	    (strncmp(credential.email, "pippo@topolandia.com", 20) == 0) &&
+	    (strncmp(credential.password, "1234", 4) == 0)) {
 		/* Set test result to success (0) if data matches */
 		value = 0;
 	} else {
@@ -209,7 +209,7 @@ int remove_password_test_file()
 	char *file = file_name(NAMEFILETEST);
 
 	/* Attempt to remove the test file using the `remove_file` function
-	  Check if removal was successful (return value 0) */
+	   Check if removal was successful (return value 0) */
 	if (remove_file(file) == 0) {
 		free(file);
 		/* Return 0 to indicate successful test (file removed) */
@@ -226,7 +226,7 @@ int remove_password_test_file()
 /* Test search_password function */
 int search_password_test()
 {
-	 /* Initialize a variable to store the test result (1 for fail) */
+	/* Initialize a variable to store the test result (1 for fail) */
 	int value = 1;
 
 	/* Get the test file name from the `NAMEFILETEST` constant */
@@ -265,4 +265,3 @@ int search_password_test()
 	/* Return the test result (0 for success, 1 for fail) */
 	return value;
 }
-

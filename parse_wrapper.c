@@ -54,7 +54,7 @@ void print_all_credential(const char *number_row)
 
 	/* Adjust the number of rows to print based on the input (if valid) */
 	if (line > 0)
-		row = (size_t) line;
+		row = (size_t)line;
 
 	puts("ID Website Username Email Password");
 
@@ -106,8 +106,7 @@ void create_credential(const char *new_credential)
 		credential.website = malloc(100 * sizeof(char));
 		if (credential.website)
 			/* Copy the token (website) into the allocated memory */
-			strncpy(credential.website, token,
-				strlen(token) + 1);
+			strncpy(credential.website, token, strlen(token) + 1);
 		else {
 			perror("Error allocation failed");
 			exit(EXIT_FAILURE);
@@ -123,8 +122,7 @@ void create_credential(const char *new_credential)
 		credential.username = malloc(100 * sizeof(char));
 		if (credential.username)
 			/* Copy the token (username) into the allocated memory */
-			strncpy(credential.username, token,
-				strlen(token) + 1);
+			strncpy(credential.username, token, strlen(token) + 1);
 		else {
 			perror("Error allocation failed");
 			free(credential.website);
@@ -142,8 +140,7 @@ void create_credential(const char *new_credential)
 		credential.email = malloc(100 * sizeof(char));
 		if (credential.email)
 			/* Copy the token (email) into the allocated memory */
-			strncpy(credential.email, token,
-				strlen(token) + 1);
+			strncpy(credential.email, token, strlen(token) + 1);
 		else {
 			perror("Error allocation failed");
 			free(credential.username);
@@ -163,8 +160,7 @@ void create_credential(const char *new_credential)
 		credential.password = malloc(100 * sizeof(char));
 		if (credential.password)
 			/* Copy the token (password) into the allocated memory */
-			strncpy(credential.password, token,
-				strlen(token) + 1);
+			strncpy(credential.password, token, strlen(token) + 1);
 		else {
 			perror("Error allocation failed");
 			free(credential.username);
@@ -211,7 +207,7 @@ void search_credential(const char *search_key)
 	int *result = search(credential, row, search_key);
 
 	/* Iterate over the results and print matching credentials */
-	for (int i = 0; i < (int) row; i++) {
+	for (int i = 0; i < (int)row; i++) {
 		if (result[i] != -1)
 			printf
 			    ("Website: %s Username: %s Email: %s Password: %s\n",

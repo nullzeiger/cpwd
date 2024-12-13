@@ -32,14 +32,14 @@
 
 /* Test assertion macro */
 #define ASSERT_TEST(test_name, function_call) \
-    do { \
-        int result = (function_call); \
-        printf("Test %s: %s%s%s\n", \
-            test_name, \
-            (result == 0) ? ANSI_COLOR_GREEN "PASSED" : ANSI_COLOR_RED "FAILED", \
-            ANSI_COLOR_RESET, \
-            (result == 0) ? "" : " (Error code: 1)"); \
-    } while (0)
+	do { \
+		int result = (function_call); \
+		printf("Test %s: %s%s%s\n", \
+		test_name, \
+		(result == 0) ? ANSI_COLOR_GREEN "PASSED" : ANSI_COLOR_RED "FAILED", \
+		ANSI_COLOR_RESET, \
+		(result == 0) ? "" : " (Error code: 1)"); \
+	} while (0)
 
 /* Wrapper test function */
 int all_password_test(void);
@@ -48,4 +48,4 @@ int new_password_test(void);
 int remove_password_test_file(void);
 int search_password_test(void);
 
-#endif /* TEST */
+#endif /* TEST_H */

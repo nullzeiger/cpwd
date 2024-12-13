@@ -85,7 +85,8 @@ size_t count_row(FILE *file)
  * Reads website, username, email, and password from each line. */
 struct credential *all(FILE *file, size_t row)
 {
-	struct credential *credential = calloc(row + 1, sizeof(struct credential));
+	struct credential *credential =
+	    calloc(row + 1, sizeof(struct credential));
 
 	if (!credential) {
 		perror("Error allocation failed");
@@ -226,7 +227,7 @@ int *search(struct credential *credential, size_t row, const char *key)
 	}
 
 	int i = 0;
-	for (i = 0; i < (int) row; i++) {
+	for (i = 0; i < (int)row; i++) {
 		/* Check if the key matches any of the fields in the current credential */
 		if (strcmp(credential[i].website, key) == 0 ||
 		    strcmp(credential[i].username, key) == 0 ||
