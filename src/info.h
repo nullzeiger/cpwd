@@ -20,10 +20,6 @@
 #ifndef INFO_H
 #define INFO_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 /* Returns the version string of the cpwd package. */
 const char *version (void);
 

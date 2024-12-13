@@ -20,7 +20,6 @@
 AC-PREREQ([2.69])
 
 AC_INIT([cpwd], [1.6.1], [ivan.guerreschi.dev@gmail.com])
-
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 
 AC_CONFIG_HEADERS([config.h])

@@ -17,8 +17,10 @@
  * You should have received a copy of the GNU General Public License
  * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-/* Define `_GNU_SOURCE` for functions like `strndupa` */
-#define  _GNU_SOURCE
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "parse_wrapper.h"
 #include "password.h"
 #include "utility.h"
@@ -104,6 +106,7 @@ create_credential (const char *new_credential)
       perror ("Error allocation failed");
       exit (EXIT_FAILURE);
     }
+
 
   /* Tokenize the input string to extract website, username, email, and password */
   token = strtok (copy_credential, delimiters);
@@ -279,7 +282,7 @@ delete_credential (const char *input_row)
       /* Rewind the password file pointer to the beginning */
       rewind (file_password);
       /* Delete the specified line from the password file and write
-         the remaining lines to the temporary file */
+       * the remaining lines to the temporary file */
       delete (file_password, file_tmp, line);
       /* Remove the original password file */
       if (remove_file (filename) == 0)
