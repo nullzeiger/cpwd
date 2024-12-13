@@ -26,8 +26,6 @@ CFLAGS = -O2 -g -ggdb -Wall -Wextra -Werror \
 	-fstack-protector-strong -pie -fPIE \
 	-D_FORTIFY_SOURCE=2 -fno-omit-frame-pointer
 
-DEBUG_FLAGS = -g -DDEBUG
-
 TARGET = cpwd
 TARGET_TEST = cpwdtest
 
