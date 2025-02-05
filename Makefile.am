@@ -1,4 +1,4 @@
-# cpwd.yml
+# Makefile.am
 #
 # Copyright (C) 2022-2024 Ivan Guerreschi
 #
@@ -17,32 +17,4 @@
 # You should have received a copy of the GNU General Public License
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
-name: Build and Test
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install dependency
-        run: sudo apt-get install help2man texlive texinfo -y
-
-      - name: Instantiate the build system
-        run: autoreconf --install
-
-      - name: Configure
-        run: ./configure
-
-      - name: Build
-        run: make
-
-      - name: Run test
-        run: make check
+SUBDIRS = src tests doc man

@@ -1,4 +1,4 @@
-/* parse_input.h
+/* all_password.c
  *
  * Copyright (C) 2022-2024 Ivan Guerreschi.
  *
@@ -17,18 +17,10 @@
  * You should have received a copy of the GNU General Public License
  * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef PARSE_INPUT_H
-#define PARSE_INPUT_H
+#include "test.h"
 
-/* This function likely takes two arguments:
- *   - `int argc`: An integer representing the number of arguments passed to the program
- *      (including the program name itself).
- *   - `char **argv`: An array of character pointers, where each element points to a string
- *       argument passed to the program.
- *
- * The function's purpose is to parse the command-line arguments provided to the program.
- * It's likely responsible for identifying the options and arguments specified by the user
- * and taking appropriate actions based on those arguments. */
-void parsing(int argc, char **argv);
-
-#endif /* PARSE_INPUT_H */
+int
+main (void)
+{
+  return all_password_test ();
+}

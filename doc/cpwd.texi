@@ -1,0 +1,141 @@
+\input texinfo
+@documentencoding UTF-8
+
+@setfilename cpwd.info
+@settitle CPWD Manual
+@documentdescription
+Simple Command-Line Password Management Tool
+@end documentdescription
+
+@copying
+Copyright @copyright{} 2024 Ivan Guerreschi
+
+@noindent
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see @url{https://www.gnu.org/licenses/}.
+@end copying
+
+@titlepage
+@title CPWD
+@subtitle Simple Command-Line Password Management Tool
+@author Ivan Guerreschi
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top CPWD Manual
+
+This manual documents CPWD version 1.0, a command-line interface for managing passwords locally.
+@end ifnottex
+
+@menu
+* Overview::                    Brief description of CPWD
+* Security Notes::              Important security considerations
+* Options::                     Available command-line options
+* Examples::                    Usage examples
+* Files::                       Configuration files
+* Reporting Bugs::              How to report bugs
+* Copyright::                   Copyright and license information
+@end menu
+
+@node Overview
+@chapter Overview
+
+@command{cpwd} is a command-line interface for managing passwords locally. It stores credentials in a @file{.password} file located in the user's home directory.
+
+@node Security Notes
+@chapter Security Notes
+
+@itemize @bullet
+@item Credentials are stored locally in the user's home directory
+@item Users are responsible for securing their home directory
+@item Recommended to use with appropriate file permissions
+@end itemize
+
+@node Options
+@chapter Options
+
+@table @option
+@item -c, --create "WEBSITE USERNAME EMAIL PASSWORD"
+Create a new password entry. Provide all four parameters in quotes.
+
+@item -a, --all [NUM]
+Display stored credentials.
+@itemize @bullet
+@item Without NUM: Shows all entries
+@item With NUM: Displays first NUM entries
+@end itemize
+
+@item -s, --search KEYWORD
+Search credentials by matching any field (website, username, email).
+
+@item -d, --delete NUM
+Delete a credential by the number.
+
+@item -h, --help
+Display comprehensive help message and usage instructions.
+
+@item -v, --version
+Show current version of cpwd.
+@end table
+
+@node Examples
+@chapter Examples
+
+Here are some basic usage examples:
+
+@example
+# Create a new credential
+cpwd -c "amazon.com johnsmith john@@email.com secretpass123"
+
+# List all credentials
+cpwd -a
+
+# List first 5 credentials
+cpwd -a 5
+
+# Search for GitHub-related credentials
+cpwd -s github
+
+# Delete number third credential
+cpwd -d 3
+@end example
+
+@node Files
+@chapter Files
+
+@table @file
+@item ~/.password
+Local file storing credentials.
+@end table
+
+@node Reporting Bugs
+@chapter Reporting Bugs
+
+Report bugs and issues at: @url{https://github.com/nullzeiger/cpwd/issues}
+or email Ivan Guerreschi at @email{ivan.guerreschi.dev@@gmail.com}.
+
+@node Copyright
+@chapter Copyright
+
+@insertcopying
+
+For the complete GNU General Public License text, visit:
+@url{https://www.gnu.org/licenses/gpl-3.0.html}
+
+@bye

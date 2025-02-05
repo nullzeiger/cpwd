@@ -1,4 +1,4 @@
-# cpwd.yml
+# man/Makefile.am
 #
 # Copyright (C) 2022-2024 Ivan Guerreschi
 #
@@ -15,34 +15,12 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
+# along with this cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
-name: Build and Test
+man_MANS = cpwd.1
+EXTRA_DIST = $(man_MANS)
+MAINTAINERCLEANFILES = $(man_MANS)
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install dependency
-        run: sudo apt-get install help2man texlive texinfo -y
-
-      - name: Instantiate the build system
-        run: autoreconf --install
-
-      - name: Configure
-        run: ./configure
-
-      - name: Build
-        run: make
-
-      - name: Run test
-        run: make check
+cpwd.1: $(top_srcdir)/src/cpwd.c $(common_mandeps)
+	$(HELP2MAN) --name="Simple Command-Line Password Management Tool" \
+		$(top_srcdir)/src/cpwd$(EXEEXT) -o $@

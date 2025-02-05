@@ -1,6 +1,6 @@
-# .editorconfig
+# configure.ac
 #
-# Copyright (C) 2022-2024 Ivan Guerreschi
+# Copyright (C) 2022-2024 Ivan Guerreschi.
 #
 # This file is part of cpwd.
 #
@@ -17,19 +17,30 @@
 # You should have received a copy of the GNU General Public License
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
+AC-PREREQ([2.69])
 
-root = true
+AC_INIT([cpwd], [1.6.1], [ivan.guerreschi.dev@gmail.com])
 
-[{*.{c,h,mk,},Makefile,Makefile.*}]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
-indent_style = tab
-indent_size = 8
+AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 
-[*.yaml]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
-indent_style = space
-indent_size = 2
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR([src/cpwd.c])
+
+AC_PROG_CC
+AC_USE_SYSTEM_EXTENSIONS
+
+AS_IF([test $cross_compiling = no], [
+  AM_MISSING_PROG([HELP2MAN], [help2man])
+], [
+  HELP2MAN=:
+])
+
+AC_CONFIG_FILES([
+ Makefile
+ src/Makefile
+ tests/Makefile
+ doc/Makefile
+ man/Makefile
+])
+
+AC_OUTPUT

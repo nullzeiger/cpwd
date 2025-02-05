@@ -20,32 +20,14 @@
 #ifndef TEST_H
 #define TEST_H
 
-#include <stdio.h>
-
 /* defines a constant for the test file name. */
 #define NAMEFILETEST "/.passwordtest"
 
-/* ANSI color codes */
-#define ANSI_COLOR_RED     "\x1b[31m"
-#define ANSI_COLOR_GREEN   "\x1b[32m"
-#define ANSI_COLOR_RESET   "\x1b[0m"
-
-/* Test assertion macro */
-#define ASSERT_TEST(test_name, function_call) \
-	do { \
-		int result = (function_call); \
-		printf("Test %s: %s%s%s\n", \
-		test_name, \
-		(result == 0) ? ANSI_COLOR_GREEN "PASSED" : ANSI_COLOR_RED "FAILED", \
-		ANSI_COLOR_RESET, \
-		(result == 0) ? "" : " (Error code: 1)"); \
-	} while (0)
-
 /* Wrapper test function */
-int all_password_test(void);
-int delete_password_test(void);
-int new_password_test(void);
-int remove_password_test_file(void);
-int search_password_test(void);
+int all_password_test (void);
+int delete_password_test (void);
+int new_password_test (void);
+int remove_password_test_file (void);
+int search_password_test (void);
 
-#endif /* TEST_H */
+#endif /* TEST */
