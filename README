@@ -18,15 +18,19 @@ cpwd --version  # Show version information
 Building from Source
 1. Install dependencies on Debin/Ubuntu
    sudo apt update
-   sudo apt install gcc autotools-dev autoconf # for buil system
+   sudo apt install gcc autotools-dev autoconf # for build system
    sudo apt install help2man texinfo # for man and doc
+
+   Install dependencies on Fedora
+   sudo dnf install gcc autoconf automake # for build system
+   sudo dnf install help2man texinfo # for man and doc
 
 2A. Clone the repository:
     git clone https://github.com/nullzeiger/cpwd.git
     cd cpwd
 
 3A. Build using make:
-    autoreconf --install
+    sh ./bootstrap
     ./configure # for more info use ./configure --help
     make
 
@@ -56,7 +60,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 License
 
-Copyright (C) 2022-2024 Ivan Guerreschi
+Copyright (C) 2025 Ivan Guerreschi
 
 This program is free software. See the file LICENSE for copying conditions.
 

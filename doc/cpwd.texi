@@ -8,7 +8,7 @@ Simple Command-Line Password Management Tool
 @end documentdescription
 
 @copying
-Copyright @copyright{} 2024 Ivan Guerreschi
+Copyright @copyright{} 2025 Ivan Guerreschi
 
 @noindent
 This program is free software: you can redistribute it and/or modify

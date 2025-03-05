@@ -1,6 +1,6 @@
 /* cpwd.c
  *
- * Copyright (C) 2022-2024 Ivan Guerreschi.
+ * Copyright (C) 2025 Ivan Guerreschi.
  *
  * This file is part of cpwd.
  *
@@ -35,11 +35,7 @@
  * Finally, the function returns `EXIT_SUCCESS` to indicate successful program execution. */
 int
 main (int argc, char **argv)
-{
-  puts ("cpwd  Copyright (C) 2022-2024  Ivan Guerreschi\n"
-    "This program comes with ABSOLUTELY NO WARRANTY;\n"
-    "This is free software, and you are welcome to redistribute it\n"
-    "under certain conditions; type `cpwd -l' for details.\n");
+{ 
   parsing (argc, argv);
 
   return EXIT_SUCCESS;

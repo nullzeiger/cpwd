@@ -1,6 +1,6 @@
 # src/Makefile.am
 #
-# Copyright (C) 2022-2024 Ivan Guerreschi
+# Copyright (C) 2025 Ivan Guerreschi
 #
 # This file is part of cpwd.
 #
@@ -17,17 +17,67 @@
 # You should have received a copy of the GNU General Public License
 # along with this cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
+# Include custom make rules for flymake.	
 include $(top_srcdir)/flymake.mk
 
-AM_CFLAGS = -Wall -Wextra -Wdouble-promotion -Wformat-security \
-	-Wformat-signedness -Winit-self -Wshift-overflow=2 \
-	-Wswitch-default -Wstrict-overflow=4 \
-	-Warith-conversion -Wduplicated-branches \
-	-Wduplicated-cond -Wshadow -Wcast-qual \
-	-Wconversion -Wdate-time -Wstrict-prototypes \
-	-Wmissing-prototypes -Winvalid-pch -Wredundant-decls \
-	-Wformat-nonliteral -ggdb
-
-nobase_include_HEADERS = info.h utility.h password.h parse_wrapper.h parse_input.h 
+# Program definition.
 bin_PROGRAMS = cpwd
-cpwd_SOURCES = cpwd.c info.c parse_input.c parse_wrapper.c password.c utility.c
+
+# Headers to be installed.
+nobase_include_HEADERS = info.h utility.h password.h parse_wrapper.h parse_input.h 
+
+# Source files.
+cpwd_SOURCES = \
+	cpwd.c \
+	info.c \
+	parse_input.c \
+	parse_wrapper.c \
+	password.c \
+	utility.c \
+	$(NULL)
+
+# Compiler warnings and debug flags.
+AM_CFLAGS = \
+    -Wall \
+    -Wextra \
+    -Wdouble-promotion \
+    -Wformat-security \
+    -Wformat-signedness \
+    -Winit-self \
+    -Wshift-overflow=2 \
+    -Wswitch-default \
+    -Wstrict-overflow=4 \
+    -Warith-conversion \
+    -Wduplicated-branches \
+    -Wduplicated-cond \
+    -Wshadow \
+    -Wcast-qual \
+    -Wconversion \
+    -Wdate-time \
+    -Wstrict-prototypes \
+    -Wmissing-prototypes \
+    -Winvalid-pch \
+    -Wredundant-decls \
+    -Wformat-nonliteral \
+    $(NULL)
+
+# Debug flags.
+AM_CFLAGS += -ggdb
+
+# Add -fanalyzer flag to AM_CFLAGS if available.
+if HAVE_GCC_ANALYZER
+AM_CFLAGS += -fanalyzer
+endif
+
+# Clean generated files.
+CLEANFILES = \
+    *~ \
+    *.bak \
+    core \
+    *.core \
+    $(NULL)
+
+# Maintainer clean.
+MAINTAINERCLEANFILES = \
+    Makefile.in \
+    $(NULL)

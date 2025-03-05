@@ -1,6 +1,6 @@
 # man/Makefile.am
 #
-# Copyright (C) 2022-2024 Ivan Guerreschi
+# Copyright (C) 2025 Ivan Guerreschi
 #
 # This file is part of cpwd.
 #
@@ -18,9 +18,11 @@
 # along with this cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
 man_MANS = cpwd.1
+
+# Call help2man for generate manual.
+cpwd.1: $(top_srcdir)/src/cpwd.c
+	$(HELP2MAN) --name="Simple Command-Line Password Management Tool" \
+		$(top_srcdir)/src/cpwd$(EXEEXT) --output=$@
+
 EXTRA_DIST = $(man_MANS)
 MAINTAINERCLEANFILES = $(man_MANS)
-
-cpwd.1: $(top_srcdir)/src/cpwd.c $(common_mandeps)
-	$(HELP2MAN) --name="Simple Command-Line Password Management Tool" \
-		$(top_srcdir)/src/cpwd$(EXEEXT) -o $@

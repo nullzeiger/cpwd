@@ -1,7 +1,6 @@
 /* parse_input.c
  *
- *
- * Copyright (C) 2022-2024 Ivan Guerreschi.
+ * Copyright (C) 2025 Ivan Guerreschi.
  *
  * This file is part of cpwd.
  *
@@ -18,9 +17,9 @@
  * You should have received a copy of the GNU General Public License
  * along with cpwd.  If not, see <http://www.gnu.org/licenses/>.  */
 
+#include "info.h"
 #include "parse_input.h"
 #include "parse_wrapper.h"
-#include "info.h"
 #include "password.h"
 #include "utility.h"
 #include <getopt.h>

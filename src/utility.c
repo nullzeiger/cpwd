@@ -1,6 +1,6 @@
 /* utility.c
  *
- * Copyright (C) 2022-2024 Ivan Guerreschi.
+ * Copyright (C) 2025 Ivan Guerreschi.
  *
  * This file is part of cpwd.
  *

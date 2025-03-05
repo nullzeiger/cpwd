@@ -1,61 +1,362 @@
-2024-12-09 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
-	* Release 16.1
-	* src/password_inpu.c Correct getopt short arg
+commit b719602
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-02-05
 
-2024-12-05 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
-	* Release 1.6
-	* Return to use GNU Build System Autotools
-	* Use mutiple files for test
+    Use autotools
 
-2024-11-19 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
+.github/workflows/cpwd.yml
+.gitignore
+AUTHORS
+ChangeLog
+Makefile
+Makefile.am
+README
+configure.ac
+doc/Makefile.am
+doc/cpwd.texi
+flymake.mk
+man/Makefile.am
+man/cpwd.1
+parse_input.c
+parse_wrapper.c
+password.c
+src/Makefile.am
+src/cpwd.c
+src/info.c
+src/info.h
+src/parse_input.c
+src/parse_input.h
+src/parse_wrapper.c
+src/parse_wrapper.h
+src/password.c
+src/password.h
+src/utility.c
+src/utility.h
+test.c
+tests/Makefile.am
+tests/all_password.c
+tests/delete_password.c
+tests/new_password.c
+tests/remove_file.c
+tests/search_password.c
+tests/test.c
+tests/test.h
+utility.c
 
-	* Release 1.5
-	* src/password_wrapper.c: resolve delete credential bug
+commit c6834c1
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-12-13
 
-2024-02-28 Ivan Guerreschi <ivan.guerreschi.dev@gmail.com>
+    Indent code
 
-	* Release 1.4
-	* lib/password.c: add multiple results search in search function
-	* src/parse_wrapper.c: update search_credential for multiple results
+cpwdtest.c
+parse_input.c
+parse_wrapper.c
+password.c
+password.h
+test.c
+test.h
 
-2023-04-21 Ivan Guerreschi <ivanguerreschi86@gmail.com>
+commit 4e0336d
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-12-13
 
-	* Release: 1.3
-	* tests/all_password_test.c: test all password
-	* tests/delete_password_test.c: delete password
-	* tests/file_password_xfail_test.c: test not exist file path
-	* tests/new_password_test.c: test new password
-	* tests/remove_file_password_test.c: test remove password
-	* tests/search_password_test.c: test search password
+    Update Makefile
 
-2022-07-08 Ivan Guerreschi <ivanguerreschi86@gmail.com>
+Makefile
 
-	* Release: 1.2
-	* src/main.c (parsing): input user function
-	* src/menu_wrapper.c: rename file to parse_wrapper.c
-	* src/include/menu_wrapper.h: rename file to parse_wrapper.h
-	* src/parse_input.c (parsing): function for input user
-	* src/include/parse_input.h, src/parse_input.c (parsing): function for input user using getopt
-	* src/include/parse_wrapper.h, src/parse_wrapper.c (all function): update function for using parse_input
+commit 63382fc
+Author: nullzeiger <157585632+nullzeiger@users.noreply.github.com>
+Date:   2024-12-04
 
-2022-06-25 Ivan Guerreschi <ivanguerreschi86@gmail.com>
+    Update cpwd.yml
 
-	* Release: 1.1
-	* lib/password.h, lib/password.c (search): function for search credential
-	* lib/password.h, lib/password.c (delete): function for delete credential
-	* src/menu.c (print_menu): add number input for search, delete function
-	* src/menu_wrapper.c (search_credential): implementation search function
-	* src/menu_wrapper.c (delete_credential): implementation delete function
-	* src/main.c (main): menu case number for search, delete function
+.github/workflows/cpwd.yml
 
-2022-05-23 Ivan Guerreschi <ivanguerreschi86@gmail.com>
+commit 9629e8b
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-12-04
 
-	* Release: 1.0
+    Add all source file in root dir
 
-Copyright (C) 2022-2024 Ivan Guerreschi
+.editorconfig
+.github/workflows/cpwd.yml
+.gitignore
+Makefile
+cpwd.c
+cpwdtest.c
+info.c
+info.h
+parse_input.c
+parse_input.h
+parse_wrapper.c
+parse_wrapper.h
+password.c
+password.h
+src/Makefile
+src/cpwd.c
+src/info.h
+src/parse_input.h
+src/parse_wrapper.h
+src/password.h
+src/utility.h
+test.c
+test.h
+tests/Makefile
+tests/cpwdtest.c
+utility.c
+utility.h
 
-This file is part of cpwd.
+commit d754d6e
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-23
 
-Copying and distribution of this file, with or without modification, are
-permitted in any medium without royalty provided the copyright notice
-and this notice are preserved.
+    Update github actions file
+
+.github/workflows/cpwd.yml
+
+commit 7003c34
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-23
+
+    Add github actions file
+
+.github/workflows/cpwd.yml
+
+commit 1fb1850
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-23
+
+    Update README.md
+
+README.md
+
+commit b58388b
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-23
+
+    Update README.md
+
+README
+README.md
+
+commit ef5ec47
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-23
+
+    Simplification of everything
+
+.gitignore
+AUTHORS
+ChangeLog
+Makefile
+Makefile.am
+bootstrap
+configure.ac
+flymake.mk
+lib/Makefile.am
+lib/password.c
+lib/utility.c
+src/Makefile
+src/Makefile.am
+src/cpwd.c
+src/info.c
+src/info.h
+src/parse_input.c
+src/parse_input.h
+src/parse_wrapper.c
+src/parse_wrapper.h
+src/password.c
+src/password.h
+src/utility.c
+src/utility.h
+tests/Makefile
+tests/Makefile.am
+tests/all_password_test.c
+tests/cpwdtest.c
+tests/delete_password_test.c
+tests/file_password_test.c
+tests/file_password_xfail_test.c
+tests/new_password_test.c
+tests/remove_file_password_test.c
+tests/search_password_test.c
+tests/tests.c
+tests/tests.h
+
+commit 0c5e450
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-22
+
+    Update manual
+
+man/cpwd.1
+
+commit 2fc35e7
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-21
+
+    Add more comments and write manual
+
+.gitignore
+Makefile.am
+lib/info.c
+lib/info.h
+lib/password.c
+lib/password.h
+lib/utility.c
+lib/utility.h
+man/cpwd.1
+src/main.c
+src/parse_input.c
+src/parse_input.h
+src/parse_wrapper.c
+src/parse_wrapper.h
+tests/all_password_test.c
+tests/delete_password_test.c
+tests/file_password_test.c
+tests/file_password_xfail_test.c
+tests/new_password_test.c
+tests/remove_file_password_test.c
+tests/search_password_test.c
+tests/utility_test.h
+
+commit 8870659
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-20
+
+    Update README and resolve make distcheck
+
+README
+tests/Makefile.am
+
+commit 98c7f9d
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-20
+
+    Add -ggdb flag and remove -std=gnu11 to configure
+
+configure.ac
+lib/Makefile.am
+src/Makefile.am
+src/parse_wrapper.c
+
+commit ca8c810
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-19
+
+    Remove include dir for headers file
+
+ChangeLog
+README
+configure.ac
+lib/Makefile.am
+lib/info.c
+lib/info.h
+lib/password.h
+lib/utility.c
+lib/utility.h
+src/Makefile.am
+src/main.c
+src/parse_input.c
+src/parse_input.h
+src/parse_wrapper.c
+src/parse_wrapper.h
+tests/Makefile.am
+tests/all_password_test.c
+tests/delete_password_test.c
+tests/file_password_test.c
+tests/file_password_xfail_test.c
+tests/new_password_test.c
+tests/remove_file_password_test.c
+tests/search_password_test.c
+tests/utility_test.h
+
+commit 373a01b
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-11-18
+
+    Resolve delete credential bug
+
+.gitignore
+configure.ac
+lib/info.c
+lib/password.c
+lib/password.h
+lib/utility.c
+lib/utility.h
+src/parse_wrapper.c
+tests/all_password_test.c
+tests/delete_password_test.c
+tests/file_password_test.c
+tests/new_password_test.c
+tests/search_password_test.c
+
+commit a61601c
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-02-27
+
+    Update README and Makefile.am
+
+Makefile.am
+README
+
+commit 372d3ba
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-02-27
+
+    Update README.md
+
+README.md
+
+commit 73b80d1
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-02-27
+
+    Added the remaining source code
+
+AUTHORS
+ChangeLog
+Makefile.am
+bootstrap
+configure.ac
+flymake.mk
+lib/Makefile.am
+lib/info.c
+lib/info.h
+lib/password.c
+lib/password.h
+lib/utility.c
+lib/utility.h
+src/Makefile.am
+src/include/parse_input.h
+src/include/parse_wrapper.h
+src/main.c
+src/parse_input.c
+src/parse_wrapper.c
+tests/Makefile.am
+tests/all_password_test.c
+tests/delete_password_test.c
+tests/file_password_test.c
+tests/file_password_xfail_test.c
+tests/include/utility_test.h
+tests/new_password_test.c
+tests/remove_file_password_test.c
+tests/search_password_test.c
+
+commit aad51c2
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2024-02-27
+
+    Add source code and release version 1.4
+
+.gitignore
+
+commit 579839a
+Author: nullzeiger <157585632+nullzeiger@users.noreply.github.com>
+Date:   2024-02-27
+
+    Initial commit
+
+.gitignore
+LICENSE
+README.md
