@@ -17,14 +17,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
-# Include custom make rules for flymake.	
+# Include custom make rules for flymake.
 include $(top_srcdir)/flymake.mk
 
 # Program definition.
 bin_PROGRAMS = cpwd
 
 # Headers to be installed.
-nobase_include_HEADERS = info.h utility.h password.h parse_wrapper.h parse_input.h 
+nobase_include_HEADERS = info.h utility.h password.h parse_wrapper.h parse_input.h
 
 # Source files.
 cpwd_SOURCES = \
@@ -59,15 +59,11 @@ AM_CFLAGS = \
     -Winvalid-pch \
     -Wredundant-decls \
     -Wformat-nonliteral \
+    -fsanitize=address \
     $(NULL)
 
 # Debug flags.
 AM_CFLAGS += -ggdb
-
-# Add -fanalyzer flag to AM_CFLAGS if available.
-if HAVE_GCC_ANALYZER
-AM_CFLAGS += -fanalyzer
-endif
 
 # Clean generated files.
 CLEANFILES = \

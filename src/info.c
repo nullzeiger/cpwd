@@ -69,13 +69,13 @@ help (void)
 {
   return "cpwd\n"
     "Options:\n"
-    "  -a     --all All credential\n"
+    "  -a --all All credential\n"
     "  -a NUM --all NUM Number of credentials entered in the NUM input\n"
     "  -c \"WEBSITE USERNAME EMAIL PASSWORD\" Create credential\n"
     "  --create \"WEB USERNAME EMAIL PASSWORD\" Create credential\n"
     "  -d NUM --delete NUM Delete credential\n"
-    "  -h Help\n"
-    "  -l License\n"
+    "  -h --help Help\n"
+    "  -l --license License\n"
     "  -s KEYWORD --search KEYWORD Search credential\n"
-    "  -v Program version\n";
+    "  -v --version Program version\n";
 }

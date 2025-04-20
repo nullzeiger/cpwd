@@ -1,3 +1,47 @@
+commit 3e02775
+Author: nullzeiger <157585632+nullzeiger@users.noreply.github.com>
+Date:   2025-03-05
+
+    Delete Makefile
+
+Makefile
+
+commit c16fe45
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-03-05
+
+    Update autotools file
+
+.gitignore
+AUTHORS
+COPYING
+ChangeLog
+INSTALL
+Makefile
+Makefile.am
+NEWS
+README
+bootstrap
+configure.ac
+doc/Makefile.am
+doc/cpwd.texi
+flymake.mk
+m4/ax_gcc_analyzer.m4
+man/Makefile.am
+man/cpwd.1
+src/Makefile.am
+src/cpwd.c
+src/info.c
+src/info.h
+src/parse_input.c
+src/parse_input.h
+src/parse_wrapper.c
+src/parse_wrapper.h
+src/password.c
+src/password.h
+src/utility.c
+src/utility.h
+
 commit b719602
 Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
 Date:   2025-02-05

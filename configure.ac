@@ -17,54 +17,55 @@
 # You should have received a copy of the GNU General Public License
 # along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
 
-dnl Minimum Autoconf version required.
+# Minimum Autoconf version required.
 AC_PREREQ([2.71])
 
-dnl Package information.
+# Package information.
 AC_INIT([cpwd],
 	[1.6.1],
 	[ivan.guerreschi.dev@gmail.com])
 
-dnl Safety checks.
+# Safety checks.
 AC_CONFIG_SRCDIR([src/cpwd.c])
-AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 
-dnl Initialize automake.
+# Initialize automake.
 AM_INIT_AUTOMAKE([-Wall -Werror subdir-objects])
 
-dnl Generate config.h.
+# Generate config.h.
 AC_CONFIG_HEADERS([config.h])
 
-dnl Checks for  programs.
+# Checks for  programs.
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_MKDIR_P
 
-dnl Checks for library functions.
+# Checks for library functions.
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_CHECK_FUNCS([strtol])
 
-dnl Checks for header files.
+# Checks for header files.
 AC_CHECK_HEADERS([getopt.h])
 
-dnl Checks for typedefs, structures, and compiler characteristics.
+# Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
 
-dnl Include the Autoconf macros from -fanalyzer flag.
-m4_include([m4/ax_gcc_analyzer.m4])
 dnl Checks for -fanalyzer flag.
-AX_CHECK_GCC_ANALYZER
+m4_include([m4/m4_ax_check_compile_flag.m4])
+AX_CHECK_COMPILE_FLAG(
+	-fanalyzer,
+	[CFLAGS="$CFLAGS -fanalyzer"],
+	[AC_MSG_WARN(["Compiler does not support -fanalyzer"])]
+)
 
-dnl Checks for help2man.
+# Checks for help2man.
 AS_IF([test $cross_compiling = no], [
-  AM_MISSING_PROG([HELP2MAN], [help2man])
-], [
-  HELP2MAN=:
-])
+  AM_MISSING_PROG([HELP2MAN], [help2man])],
+  [HELP2MAN=:]
+)
 
-dnl Configure Makefile outputs.
+# Configure Makefile outputs.
 AC_CONFIG_FILES([
  Makefile
  src/Makefile
@@ -74,10 +75,9 @@ AC_CONFIG_FILES([
 ])
 
 
-dnl Display configuration.
+# Display configuration.
 AC_MSG_NOTICE([
   ${PACKAGE_NAME} version ${PACKAGE_VERSION}
-  Compiler: '${CC}'
-])
+  Compiler: '${CC}'])
 
 AC_OUTPUT

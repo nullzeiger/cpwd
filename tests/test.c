@@ -1,6 +1,6 @@
 /* test.c
  *
- * Copyright (C) 2022-2024 Ivan Guerreschi.
+ * Copyright (C) 2025 Ivan Guerreschi.
  *
  * This file is part of cpwd.
  *
@@ -291,6 +291,12 @@ search_password_test ()
       value = 1;
     }
 
+  free (credential[0].website);
+  free (credential[0].username);
+  free (credential[0].email);
+  free (credential[0].password);
+
+  free (credential);
   free (result);
   free (file);
 
