@@ -21,7 +21,7 @@
 #define TEST_H
 
 /* defines a constant for the test file name. */
-#define NAMEFILETEST "/.passwordtest"
+#define NAMEFILETEST "/../../tmp/.passwordtest"
 
 /* Wrapper test function */
 int all_password_test (void);

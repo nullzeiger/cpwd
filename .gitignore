@@ -71,3 +71,8 @@ TAGS
 /doc/cpwd.info
 /doc/texinfo.tex
 /man/cpwd.1
+
+# dejagnu
+tests/testsuite/cpwd.sum
+tests/testsuite/site.bak
+tests/testsuite/site.exp	

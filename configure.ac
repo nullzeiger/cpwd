@@ -47,6 +47,7 @@ AC_CHECK_FUNCS([strtol])
 
 # Checks for header files.
 AC_CHECK_HEADERS([getopt.h])
+AC_CHECK_HEADERS([unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
@@ -70,10 +71,10 @@ AC_CONFIG_FILES([
  Makefile
  src/Makefile
  tests/Makefile
+ #tests/testsuite/Makefile
  doc/Makefile
  man/Makefile
 ])
-
 
 # Display configuration.
 AC_MSG_NOTICE([

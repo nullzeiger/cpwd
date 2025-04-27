@@ -32,7 +32,7 @@ open_file (FILE **file, const char *filename)
   if ((*file = fopen (filename, "a+")) == NULL)
     {
       perror ("Error open file");
-      exit (EXIT_FAILURE);
+       exit (EXIT_FAILURE);
     }
 }
 
@@ -44,7 +44,7 @@ create_file (FILE **file, const char *filename)
   if ((*file = fopen (filename, "w+")) == NULL)
     {
       perror ("Error create file");
-      exit (EXIT_FAILURE);
+       exit (EXIT_FAILURE);
     }
 }
 
@@ -56,7 +56,7 @@ read_file (FILE **file, const char *filename)
   if ((*file = fopen (filename, "r+")) == NULL)
     {
       perror ("Error read file");
-      exit (EXIT_FAILURE);
+       exit (EXIT_FAILURE);
     }
 }
 

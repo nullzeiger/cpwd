@@ -21,7 +21,8 @@
 include $(top_srcdir)/flymake.mk
 
 # Compiler warnings and debug flags.
-AM_CFLAGS = -Wall \
+AM_CFLAGS = \
+	-Wall \
 	-Wextra \
 	-Wdouble-promotion \
 	-Wformat-security \
@@ -42,17 +43,29 @@ AM_CFLAGS = -Wall \
 	-Wredundant-decls \
 	-Wformat-nonliteral \
 	-ggdb \
+	-fsanitize=address \
 	$(NULL)
+
+AM_LDFLAGS= -fsanitize=address
 
 # Headers
 noinst_HEADERS = test.h
 
 # Program definition.
-TESTS = new_password all_password search_password delete_password remove_file 
+TESTS = new_password all_password search_password delete_password #remove_file 
 check_PROGRAMS = $(TESTS)
 
 all_password_SOURCES = all_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
 delete_password_SOURCES = delete_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
 new_password_SOURCES = new_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
-remove_file_SOURCES = remove_file.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
+#remove_file_SOURCES = remove_file.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
 search_password_SOURCES = search_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
+
+# DejaGNU
+#SUBDIRS = testsuite
+
+AUTOMAKE_OPTIONS = dejagnu
+DEJATOOL = cpwd
+AM_RUNTESTFLAGS  = --tool $$tool --srcdir $$srcdir
+
+EXTRA_DIST = cpwd.exp

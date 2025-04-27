@@ -65,6 +65,8 @@ AM_CFLAGS = \
 # Debug flags.
 AM_CFLAGS += -ggdb
 
+AM_LDFLAGS= -fsanitize=address
+
 # Clean generated files.
 CLEANFILES = \
     *~ \

@@ -238,7 +238,10 @@ search_credential (const char *search_key)
 	   credential[result[i]].website,
 	   credential[result[i]].username,
 	   credential[result[i]].email, credential[result[i]].password);
+      else
+	printf ("Password %s not found", search_key);
     }
+  
 
   for (size_t i = 0; i < row; i++)
     {

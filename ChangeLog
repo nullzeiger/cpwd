@@ -1,3 +1,26 @@
+commit 4661d81
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-04-20
+
+    Use m4_ax_check_compile_flag.m4
+
+ChangeLog
+bootstrap
+configure.ac
+m4/ax_gcc_analyzer.m4
+m4/m4_ax_check_compile_flag.m4
+man/cpwd.1
+src/Makefile.am
+src/info.c
+tests/Makefile.am
+tests/all_password.c
+tests/delete_password.c
+tests/new_password.c
+tests/remove_file.c
+tests/search_password.c
+tests/test.c
+tests/test.h
+
 commit 3e02775
 Author: nullzeiger <157585632+nullzeiger@users.noreply.github.com>
 Date:   2025-03-05

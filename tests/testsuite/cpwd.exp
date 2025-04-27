@@ -1,0 +1,34 @@
+# DejaGNU test script for calculator
+
+# Set up the test
+set test_name "cpwd"
+
+# cpwd path
+set cpwd [file join [pwd] ".." ".." "src" "cpwd"]
+
+# Test version
+set test "version"
+spawn $cpwd -v
+expect {
+    "cpwd 1.6.1" { pass "$test" }
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+# Test help
+set test "help"
+spawn $cpwd -h
+expect {
+    -re "cpwd\r?\nOptions:\r?\n  -a --all All credential\r?\n  -a NUM --all NUM Number of credentials entered in the NUM input\r?\n  -c \\\"WEBSITE USERNAME EMAIL PASSWORD\\\" Create credential\r?\n  --create \\\"WEB USERNAME EMAIL PASSWORD\\\" Create credential\r?\n  -d NUM --delete NUM Delete credential\r?\n  -h --help Help\r?\n  -l --license License\r?\n  -s KEYWORD --search KEYWORD Search credential\r?\n  -v --version Program version\r?\n" { pass "$test"}
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+# Test search
+set test "search"
+spawn $cpwd -s xxxx
+expect {
+    "Password xxxx not found" { pass "$test"}
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}

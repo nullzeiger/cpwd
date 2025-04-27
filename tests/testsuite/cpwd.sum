@@ -1,0 +1,18 @@
+Test run by ivan on Thu Apr 24 21:24:54 2025
+Native configuration is x86_64-pc-linux-gnu
+
+		=== cpwd tests ===
+
+Schedule of variations:
+    unix
+
+Running target unix
+Running ./cpwd.exp ...
+PASS: version
+PASS: help
+PASS: search
+Running ./site.exp ...
+
+		=== cpwd Summary ===
+
+# of expected passes		3
