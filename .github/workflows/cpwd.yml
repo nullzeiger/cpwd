@@ -1,6 +1,6 @@
 # cpwd.yml
 #
-# Copyright (C) 2022-2024 Ivan Guerreschi
+# Copyright (C) 2025 Ivan Guerreschi
 #
 # This file is part of cpwd.
 #
@@ -33,13 +33,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependency
-        run: sudo apt-get install help2man texlive texinfo -y
+        run: sudo apt-get install help2man texlive texinfo dejagnu -y
 
       - name: Instantiate the build system
-        run: autoreconf --install
+        run: ./bootstrap
 
       - name: Configure
-        run: ./configure
+        run: ./configure --enable-test
 
       - name: Build
         run: make
