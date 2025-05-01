@@ -1,3 +1,34 @@
+commit 4a8f347
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-01
+
+    Update CI
+
+.github/workflows/cpwd.yml
+
+commit 6bdd762
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-01
+
+    Add more DejaGNU tests
+
+.gitignore
+ChangeLog
+Makefile.am
+configure.ac
+src/Makefile.am
+src/password.c
+src/utility.h
+tests/Makefile.am
+tests/test.c
+tests/testsuite/Makefile.am
+tests/testsuite/cpwd.exp
+testsuite/Makefile.am
+testsuite/config/default.exp
+testsuite/cpwd.tests/cpwd.exp
+testsuite/lib/cpwd.exp
+testsuite/site.exp
+
 commit 37fde95
 Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
 Date:   2025-04-27

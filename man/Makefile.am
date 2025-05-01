@@ -20,7 +20,7 @@
 man_MANS = cpwd.1
 
 # Call help2man for generate manual.
-cpwd.1: $(top_srcdir)/src/cpwd
+cpwd.1: $(top_srcdir)/src/cpwd.c
 	$(HELP2MAN) --name="Simple Command-Line Password Management Tool" \
 		$(top_srcdir)/src/cpwd$(EXEEXT) --output=$@
 

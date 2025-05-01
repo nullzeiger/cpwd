@@ -20,33 +20,51 @@ Building from Source
    sudo apt update
    sudo apt install gcc autotools-dev autoconf # for build system
    sudo apt install help2man texinfo # for man and doc
+   sudo apt install dejagnu # for test
 
    Install dependencies on Fedora
    sudo dnf install gcc autoconf automake # for build system
    sudo dnf install help2man texinfo # for man and doc
+   sudo dnf install dejagnu # for test
 
-2A. Clone the repository:
+2. Clone the repository:
     git clone https://github.com/nullzeiger/cpwd.git
     cd cpwd
 
-3A. Build using make:
+3. Build using make:
     sh ./bootstrap
     ./configure # for more info use ./configure --help
     make
 
-2B. Build from .tar.gz:
+4. Test (optional):
+    ./configure --enable-test
+    make check
+    
+    For normal user build
+    ./configure
+    make
+
+5. Install (optional):
+   sudo make install
+
+1. Build from .tar.gz:
     Download latest version https://github.com/nullzeiger/cpwd/releases
     tar -xf cpwd-1.6.1.tar.gz
     cd cpwd-1.6.1
 
-3B. Build using make:
+2. Build using make:
     ./configure # for more info use ./configure --help
     make
 
-4. Test
+3. Test (optional):
+        ./configure --enable-test
 	make check
+        
+        For normal user build 
+        ./configure
+        make
 
-5. Install (optional):
+4. Install (optional):
 	sudo make install
 
 Contributing
