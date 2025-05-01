@@ -21,6 +21,7 @@
 SUBDIRS = \
 	src \
 	tests \
+	testsuite \
 	doc \
 	man \
 	$(NULL)

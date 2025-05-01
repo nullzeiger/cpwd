@@ -283,11 +283,12 @@ void
 delete (FILE *file, FILE *tmp_file, const int line)
 {
   /* Buffer to store a line of text from the file */
-  char buffer[BUFSIZ];
+  int buffer_capacity = 1024;
+  char buffer[buffer_capacity];
   int count = 1;
 
   /* Read lines from the original file */
-  while ((fgets (buffer, BUFSIZ, file)) != NULL)
+  while ((fgets (buffer, buffer_capacity, file)) != NULL)
     {
       /* If the current line is not the one to be deleted, write it to the
          temporary file */

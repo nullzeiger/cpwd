@@ -30,8 +30,8 @@ all_password_test ()
   /* Initialize a variable to store the test result (1 for fail) */
   int value = 1;
 
-  /* Get the test file name from the `NAMEFILETEST` constant */
-  char *file = file_name (NAMEFILETEST);
+  /* Get the test file name from the `NAMEFILE` constant */
+  char *file = file_name (NAMEFILE);
 
   FILE *file_password, *file_row;
   open_file (&file_password, file);
@@ -79,8 +79,8 @@ delete_password_test ()
   /* Initialize a variable to store the test result (1 for fail) */
   int value = 1;
 
-  /* Get the test file name from the `NAMEFILETEST` constant */
-  char *file = file_name (NAMEFILETEST);
+  /* Get the test file name from the `NAMEFILE` constant */
+  char *file = file_name (NAMEFILE);
 
   /* Declare file pointers for the password file and a temporary file (not used here) */
   FILE *file_password, *file_row;
@@ -130,8 +130,8 @@ new_password_test ()
   /* Initialize a variable to store the test result (0 for success) */
   int value = 0;
 
-  /* Get the test file name from the `NAMEFILETEST` constant */
-  char *file = file_name (NAMEFILETEST);
+  /* Get the test file name from the `NAMEFILE` constant */
+  char *file = file_name (NAMEFILE);
 
   /* Declare a file pointer for the password file */
   FILE *file_password;
@@ -230,8 +230,8 @@ remove_password_test_file ()
   /* Initialize a variable to store the test result (1 for fail) */
   int value = 1;
 
-  /* Get the test file name from the `NAMEFILETEST` constant */
-  char *file = file_name (NAMEFILETEST);
+  /* Get the test file name from the `NAMEFILE` constant */
+  char *file = file_name (NAMEFILE);
 
   /* Attempt to remove the test file using the `remove_file` function
      Check if removal was successful (return value 0) */
@@ -258,8 +258,8 @@ search_password_test ()
   /* Initialize a variable to store the test result (1 for fail) */
   int value = 1;
 
-  /* Get the test file name from the `NAMEFILETEST` constant */
-  char *file = file_name (NAMEFILETEST);
+  /* Get the test file name from the `NAMEFILE` constant */
+  char *file = file_name (NAMEFILE);
 
   /* Declare file pointers for the password file and a temporary file (not used here) */
   FILE *file_password, *file_row;

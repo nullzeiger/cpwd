@@ -21,7 +21,12 @@
 #define UTILITY_H
 
 /* Defines the constant NAMEFILE with the path to the password file */
+#ifdef TEST
+#define NAMEFILE "/.passwordtmp"
+#else
 #define NAMEFILE  "/.password"
+#endif
+
 /* Defines the constant TMPNAMEFILE with the path to the temporary password file */
 #define TMPNAMEFILE "/.passwordtmp"
 

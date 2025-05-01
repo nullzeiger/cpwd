@@ -1,0 +1,93 @@
+# cpwd.exp
+#
+# Copyright (C) 2025 Ivan Guerreschi.
+#
+# This file is part of cpwd.
+#
+# cpwd is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# cpwd is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with cpwd.  If not, see <http://www.gnu.org/licenses/>.
+
+# DejaGNU test script for calculator
+
+load_lib "cpwd.exp"
+
+# Set up the test
+set test_name "cpwd"
+
+# set tool test file
+set cpwd [cpwd_test]
+
+# Test version
+set test "version"
+spawn $cpwd -v
+expect {
+    "cpwd 1.6.1" { pass "$test" }
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+# Test help
+set test "help"
+spawn $cpwd -h
+expect {
+    -re "cpwd\r?\nOptions:\r?\n  -a --all All credential\r?\n  -a NUM --all NUM Number of credentials entered in the NUM input\r?\n  -c \\\"WEBSITE USERNAME EMAIL PASSWORD\\\" Create credential\r?\n  --create \\\"WEB USERNAME EMAIL PASSWORD\\\" Create credential\r?\n  -d NUM --delete NUM Delete credential\r?\n  -h --help Help\r?\n  -l --license License\r?\n  -s KEYWORD --search KEYWORD Search credential\r?\n  -v --version Program version\r?\n" { pass "$test"}
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+# Test all Password
+set test "all password"
+spawn $cpwd -a
+expect {
+    -re "ID Website Username Email Password\r?\n1 webpippo pippo pippo@topolandia.com 1234" { pass "$test" }
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+# Test search Password
+set test "search password"
+spawn $cpwd -s webpippo
+expect {
+   -re "Website: webpippo Username: pippo Email: pippo@topolandia.com Password: 1234" { pass "$test" }
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+# Test add Password
+set test "add topolina password"
+spawn $cpwd -c "topolina.it topolina topolina@topolandia.com qwerty"
+expect {
+   "" { pass "$test" }
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+# Test add Password
+set test "add paperina password"
+spawn $cpwd -c "paperina.it paperina paperina@topolandia.com 1q2w3e4r5t6y"
+expect {
+   "" { pass "$test" }
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+# Test search password 
+set test "search topolina password"
+spawn $cpwd --search topolina
+expect {
+   "Website: topolina.it Username: topolina Email: topolina@topolandia.com Password: qwerty" { pass "$test" }
+    timeout { fail "$test (timeout)" }
+    default { fail "$test" }
+}
+
+cleanup

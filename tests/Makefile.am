@@ -46,6 +46,10 @@ AM_CFLAGS = \
 	-fsanitize=address \
 	$(NULL)
 
+if TEST
+AM_CFLAGS += -DTEST
+endif
+
 AM_LDFLAGS= -fsanitize=address
 
 # Headers
@@ -60,12 +64,3 @@ delete_password_SOURCES = delete_password.c test.c $(top_srcdir)/src/password.c 
 new_password_SOURCES = new_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
 #remove_file_SOURCES = remove_file.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
 search_password_SOURCES = search_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
-
-# DejaGNU
-#SUBDIRS = testsuite
-
-AUTOMAKE_OPTIONS = dejagnu
-DEJATOOL = cpwd
-AM_RUNTESTFLAGS  = --tool $$tool --srcdir $$srcdir
-
-EXTRA_DIST = cpwd.exp

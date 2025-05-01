@@ -1,3 +1,38 @@
+commit 37fde95
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-04-27
+
+    Clean project
+
+man/cpwd.1
+tests/cpwd.exp
+tests/testsuite/cpwd.sum
+tests/testsuite/site.bak
+tests/testsuite/site.exp
+
+commit 5dc7635
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-04-27
+
+    DejaGNU
+
+.gitignore
+ChangeLog
+INSTALL
+configure.ac
+man/Makefile.am
+src/Makefile.am
+src/parse_wrapper.c
+src/password.c
+tests/Makefile.am
+tests/cpwd.exp
+tests/test.h
+tests/testsuite/Makefile.am
+tests/testsuite/cpwd.exp
+tests/testsuite/cpwd.sum
+tests/testsuite/site.bak
+tests/testsuite/site.exp
+
 commit 4661d81
 Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
 Date:   2025-04-20

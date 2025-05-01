@@ -53,12 +53,9 @@ AC_CHECK_HEADERS([unistd.h])
 AC_TYPE_SIZE_T
 
 dnl Checks for -fanalyzer flag.
-m4_include([m4/m4_ax_check_compile_flag.m4])
-AX_CHECK_COMPILE_FLAG(
-	-fanalyzer,
+AX_CHECK_COMPILE_FLAG([-fanalyzer],
 	[CFLAGS="$CFLAGS -fanalyzer"],
-	[AC_MSG_WARN(["Compiler does not support -fanalyzer"])]
-)
+	[AC_MSG_WARN(["Compiler does not support -fanalyzer"])])
 
 # Checks for help2man.
 AS_IF([test $cross_compiling = no], [
@@ -66,19 +63,44 @@ AS_IF([test $cross_compiling = no], [
   [HELP2MAN=:]
 )
 
+# Find the 'runtest' utility provided by DejaGNU
+AC_CHECK_PROG([RUNTEST_CHECK], [runtest], [yes])
+AS_VAR_IF([RUNTEST_CHECK],
+	["yes"],
+	[],
+	[AC_MSG_ERROR([DejaGNU 'runtest' program not found in PATH. Please install DejaGNU.])])
+
+# Find the 'expect' utility required by DejaGNU/runtest
+AC_CHECK_PROG([EXPECT_CHECK], [expect], [yes])
+AS_VAR_IF([EXPECT_CHECK],
+	["yes"],
+	[],
+	[AC_MSG_ERROR(['expect' program not found in PATH. Please install expect.])])
+
+# Find the 'runtest' utility provided by DejaGNU
+AC_CHECK_PROG([TEXINFO_CHECK], [makeinfo], [yes])
+AS_VAR_IF([TEXINFO_CHECK],
+	["yes"],
+	[],
+	[AC_MSG_ERROR(['texinfo' program not found in PATH. Please install texinfo.])])
+
+AC_ARG_ENABLE([test],
+[  --enable-test    Turn on testting],
+[case "${enableval}" in
+  yes) test=true ;;
+  no)  test=false ;;
+  *) AC_MSG_ERROR([bad value ${enableval} for --enable-test]) ;;
+esac],[test=false])
+AM_CONDITIONAL([TEST], [test x$test = xtrue])
+
 # Configure Makefile outputs.
 AC_CONFIG_FILES([
  Makefile
  src/Makefile
  tests/Makefile
- #tests/testsuite/Makefile
+ testsuite/Makefile
  doc/Makefile
  man/Makefile
 ])
-
-# Display configuration.
-AC_MSG_NOTICE([
-  ${PACKAGE_NAME} version ${PACKAGE_VERSION}
-  Compiler: '${CC}'])
 
 AC_OUTPUT

@@ -73,6 +73,7 @@ TAGS
 /man/cpwd.1
 
 # dejagnu
-tests/testsuite/cpwd.sum
-tests/testsuite/site.bak
-tests/testsuite/site.exp	
+*.sum
+*.bak
+testsuite/site.exp	
+tests/testsuite/cpwd.exp
