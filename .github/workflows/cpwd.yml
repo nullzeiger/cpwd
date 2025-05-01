@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependency
-        run: sudo apt-get install help2man texlive texinfo dejagnu texi2dvi -y
+        run: sudo apt-get install help2man texlive texinfo dejagnu texinfo -y
 
       - name: Instantiate the build system
         run: ./bootstrap
