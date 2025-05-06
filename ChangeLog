@@ -1,3 +1,30 @@
+commit d4c241c
+Author: Ivan Guerreschi <157585632+nullzeiger@users.noreply.github.com>
+Date:   2025-05-01
+
+    Update cpwd.yml
+
+.github/workflows/cpwd.yml
+
+commit 5048b46
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-01
+
+    CI for distcheck
+
+.github/workflows/cpwd.yml
+
+commit 0f9b6d7
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-01
+
+    CI for distcheck
+
+.github/workflows/cpwd.yml
+ChangeLog
+README
+man/Makefile.am
+
 commit 4a8f347
 Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
 Date:   2025-05-01
