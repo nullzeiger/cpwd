@@ -32,6 +32,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Update system
+        run: sudo apt-get update && sudo apt-get upgrade
+
       - name: Install dependency
         run: sudo apt-get install help2man texlive texinfo dejagnu texinfo -y
 

@@ -27,39 +27,32 @@
 
 /* This function get complete file path for the .password file.
  * The function returns the allocated memory containing the full path to the filename. */
-char *
-file_name (const char *file_password)
+char
+*file_name(const char *file_password)
 {
   /* Get the user's home directory */
-  char *home_dir = getenv ("HOME");
+  char *home_dir = getenv("HOME");
+
   /* If HOME environment variable is not set,
    *  try to get it from the password database */
   if (home_dir == NULL)
     {
-      struct passwd *pwd = getpwuid (getuid ());
+      struct passwd *pwd = getpwuid(getuid());
       if (pwd == NULL)
-	{
-	  perror ("Error get HOME variable");
-	  return NULL;
-	}
+        {
+          perror("Error get HOME variable");
+          return NULL;
+        }
       home_dir = pwd->pw_dir;
     }
 
-  /* Calculate the total length needed for the filename,
-   * including the null terminator */
-  size_t len = strlen (home_dir) + strlen (file_password) + 1;
-
-  /* Allocate memory for the filename string */
-  char *file = malloc (len);
-  if (file == NULL)
+  /* Format the string */
+  char *file = NULL;
+  if (asprintf(&file, "%s%s", home_dir, file_password) == -1)
     {
-      perror ("Error allocation failed");
+      perror("Error allocation failed");
       return NULL;
     }
-
-  /* Format the filename by concatenating the home directory
-   * and the file password */
-  snprintf (file, len, "%s%s", home_dir, file_password);
 
   return file;
 }
