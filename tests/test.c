@@ -254,13 +254,7 @@ remove_password_test_file ()
 /* Test search_password function */
 int
 search_password_test ()
-{
-  if (strcmp ("/.password", NAMEFILE) == 0)
-    {
-      perror ("Use --enable-test flag in ./configure for run tests");
-      exit (EXIT_FAILURE);
-    }
-  
+{  
   /* Initialize a variable to store the test result (1 for fail) */
   int value = 1;
 
