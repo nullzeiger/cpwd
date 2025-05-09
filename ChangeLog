@@ -1,3 +1,29 @@
+commit 05e0c30
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-08
+
+    Remove check for pass make distcheck
+
+tests/test.c
+
+commit b9ed16c
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-08
+
+    Remove check for pass make distcheck
+
+tests/test.c
+
+commit a4dc0d6
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-08
+
+    Use asprintf for dynamically allocates strings
+
+.github/workflows/cpwd.yml
+ChangeLog
+src/utility.c
+
 commit 8a84b49
 Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
 Date:   2025-05-06

@@ -31,16 +31,16 @@ char
 *file_name(const char *file_password)
 {
   /* Get the user's home directory */
-  char *home_dir = getenv("HOME");
+  char *home_dir = getenv ("HOME");
 
   /* If HOME environment variable is not set,
    *  try to get it from the password database */
   if (home_dir == NULL)
     {
-      struct passwd *pwd = getpwuid(getuid());
+      struct passwd *pwd = getpwuid (getuid ());
       if (pwd == NULL)
         {
-          perror("Error get HOME variable");
+          perror ("Error get HOME variable");
           return NULL;
         }
       home_dir = pwd->pw_dir;
@@ -48,9 +48,9 @@ char
 
   /* Format the string */
   char *file = NULL;
-  if (asprintf(&file, "%s%s", home_dir, file_password) == -1)
+  if (asprintf (&file, "%s%s", home_dir, file_password) < 0)
     {
-      perror("Error allocation failed");
+      perror ("Error allocation failed");
       return NULL;
     }
 

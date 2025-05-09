@@ -51,4 +51,4 @@ jobs:
         run: make check
 
       - name: Test create tar
-        run: ./configure && make && make distcheck
+        run: ./configure --enable-test && make && make distcheck
