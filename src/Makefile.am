@@ -59,17 +59,16 @@ AM_CFLAGS = \
     -Winvalid-pch \
     -Wredundant-decls \
     -Wformat-nonliteral \
-    -fsanitize=address \
     $(NULL)
 
-# Debug flags.
-AM_CFLAGS += -ggdb
-
+# Test flags
 if TEST
-AM_CFLAGS += -DTEST
+AM_CFLAGS += -DTEST \
+	-fsanitize=address \
+	-ggdb \
+	$(NULL)
+AM_LDFLAGS = -fsanitize=address
 endif
-
-AM_LDFLAGS= -fsanitize=address
 
 # Clean generated files.
 CLEANFILES = \

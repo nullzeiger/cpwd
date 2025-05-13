@@ -1,3 +1,17 @@
+commit d8cae5a
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-13
+
+    Add macro for create cpwd.1 man
+
+.gitignore
+ChangeLog
+Makefile.am
+configure.ac
+doc/Makefile.am
+m4/m4_ax_prog_help2man.m4
+man/Makefile.am
+
 commit 5832e24
 Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
 Date:   2025-05-13

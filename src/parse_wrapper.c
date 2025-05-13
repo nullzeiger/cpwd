@@ -19,6 +19,7 @@
 
 /* Define `_GNU_SOURCE` for functions like `strndupa` */
 #define  _GNU_SOURCE
+
 #include "parse_wrapper.h"
 #include "password.h"
 #include "utility.h"

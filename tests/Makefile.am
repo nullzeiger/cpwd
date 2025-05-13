@@ -42,25 +42,25 @@ AM_CFLAGS = \
 	-Winvalid-pch \
 	-Wredundant-decls \
 	-Wformat-nonliteral \
-	-ggdb \
-	-fsanitize=address \
 	$(NULL)
 
+# Test flags
 if TEST
-AM_CFLAGS += -DTEST
+AM_CFLAGS += -DTEST \
+	-fsanitize=address \
+	-ggdb \
+	$(NULL)
+AM_LDFLAGS = -fsanitize=address
 endif
-
-AM_LDFLAGS= -fsanitize=address
 
 # Headers
 noinst_HEADERS = test.h
 
 # Program definition.
-TESTS = new_password all_password search_password delete_password #remove_file 
+TESTS = new_password all_password search_password delete_password 
 check_PROGRAMS = $(TESTS)
 
 all_password_SOURCES = all_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
 delete_password_SOURCES = delete_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
 new_password_SOURCES = new_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
-#remove_file_SOURCES = remove_file.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
 search_password_SOURCES = search_password.c test.c $(top_srcdir)/src/password.c $(top_srcdir)/src/utility.c
