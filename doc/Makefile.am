@@ -20,4 +20,13 @@
 # Create info page from textinfo file.
 info_TEXINFOS = cpwd.texi
 
-MAINTAINERCLEANFILES = cpwd.info
+# Create man from help2man
+# Set cpwd 
+AX_HELP2MAN_PREFIX_BIN = $(top_srcdir)/src
+if HAVE_HELP2MAN
+man1_MANS = $(ax_help2man_MANS)
+@AX_HELP2MAN_RULES@
+EXTRA_DIST = $(man1_MANS)
+endif
+
+MAINTAINERCLEANFILES = cpwd.info man1_MANS

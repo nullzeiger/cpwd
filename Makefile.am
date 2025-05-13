@@ -23,7 +23,6 @@ SUBDIRS = \
 	tests \
 	testsuite \
 	doc \
-	man \
 	$(NULL)
 
 # Documentation files

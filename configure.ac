@@ -58,10 +58,7 @@ AX_CHECK_COMPILE_FLAG([-fanalyzer],
 	[AC_MSG_WARN(["Compiler does not support -fanalyzer"])])
 
 # Checks for help2man.
-AS_IF([test $cross_compiling = no], [
-  AM_MISSING_PROG([HELP2MAN], [help2man])],
-  [HELP2MAN=:]
-)
+AX_PROG_HELP2MAN
 
 # Find the 'runtest' utility provided by DejaGNU
 AC_CHECK_PROG([RUNTEST_CHECK], [runtest], [yes])
@@ -100,7 +97,6 @@ AC_CONFIG_FILES([
  tests/Makefile
  testsuite/Makefile
  doc/Makefile
- man/Makefile
 ])
 
 AC_OUTPUT

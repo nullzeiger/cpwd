@@ -70,7 +70,7 @@ TAGS
 
 /doc/cpwd.info
 /doc/texinfo.tex
-/man/cpwd.1
+/doc/man/
 
 # dejagnu
 *.sum
