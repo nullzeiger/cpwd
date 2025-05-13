@@ -24,6 +24,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* Buffer size*/
+#define BUFFER 1024
+
 /* Opens a file in append and read+write mode.
  * If opening fails, prints an error message and exits. */
 void
@@ -173,8 +176,8 @@ all (FILE *file, size_t row)
 void
 create (FILE *file, struct credential credential)
 {
-  /* Buffer to hold temporary data during string concatenation */
-  char buffer[BUFSIZ];
+    /* Buffer to hold temporary data during string concatenation */
+  char buffer[BUFFER];
   /* Allocate initial memory for the new credential string */
   char *new_credential = calloc (1, 1);
 
@@ -283,12 +286,11 @@ void
 delete (FILE *file, FILE *tmp_file, const int line)
 {
   /* Buffer to store a line of text from the file */
-  int buffer_capacity = 1024;
-  char buffer[buffer_capacity];
+  char buffer[BUFFER];
   int count = 1;
 
   /* Read lines from the original file */
-  while ((fgets (buffer, buffer_capacity, file)) != NULL)
+  while ((fgets (buffer, BUFFER, file)) != NULL)
     {
       /* If the current line is not the one to be deleted, write it to the
          temporary file */

@@ -1,3 +1,14 @@
+commit 9aee800
+Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
+Date:   2025-05-09
+
+    Update CI for enable test in distcheck
+
+.github/workflows/cpwd.yml
+ChangeLog
+src/utility.c
+tests/test.c
+
 commit 05e0c30
 Author: nullzeiger <ivan.guerreschi.dev@gmail.com>
 Date:   2025-05-08
